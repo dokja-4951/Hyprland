@@ -4,7 +4,7 @@ These dotfiles are not 100% my creation i just added my touch and my preferance 
 
 
 # How to use these -
-A- Copy all files inside .config to your .config directory  
+A- Copy all files from .config to your .config directory  
 
 B- Put.zshrc into $HOME directory  
 
