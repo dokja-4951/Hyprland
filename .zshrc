@@ -114,4 +114,4 @@ fastfetch
 
 autoload bashcompinit
 bashcompinit
-source "/$HOME/.local/share/bash-completion/completions/am"
+source "$HOME/.local/share/bash-completion/completions/am"
