@@ -8,7 +8,7 @@ A- Copy all files from config to your .config directory
 
 B- Put.zshrc into $HOME directory  
 
-C- Put wallpapers folder into ~/Pictures  
+C- Download [wallpaers.zip](https://github.com/dokja-4951/Hyprland/releases/download/wallpapers-v1/wallpapers.zip) assset from Releases and extract it into ~/Pictures  
 
 
     
