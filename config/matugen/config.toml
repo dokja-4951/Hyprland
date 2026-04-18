@@ -42,3 +42,6 @@ output_path = '~/.config/spicetify/Themes/text/color.ini'
 input_path = '~/.config/matugen/templates/midnight-discord.css'
 output_path = '~/.config/vesktop/themes/matugen.css'
 
+[templates.clipse]
+input_path = "~/.config/matugen/templates/clipse.json"
+output_path = "~/.config/clipse/custom_theme.json"
