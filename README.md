@@ -14,7 +14,7 @@ C- Download [wallpaers.zip](https://github.com/dokja-4951/Hyprland/releases/down
     
 # Important
 For these to work properly you should have these things installed   
-[ fastfetch kitty matugen oh-my-zsh rofi swaync waybar wlogout ]   
+[ fastfetch kitty matugen oh-my-zsh rofi swaync waybar wlogout awww clipse+wl-clipboard]   
 
 
     
