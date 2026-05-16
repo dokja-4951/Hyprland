@@ -10,7 +10,9 @@ B- Put.zshrc into $HOME directory
 
 C- Download [wallpaers.zip](https://github.com/dokja-4951/Hyprland/releases/download/wallpapers-v1/wallpapers.zip) assset from Releases and extract it into ~/Pictures  
 
-
+D- Permission 
+Giver permission to Scripts for them to work properly
+"chmod +x ~/.config/hypr/scripts/*"
     
 # Important
 For these to work properly you should have these things installed   
