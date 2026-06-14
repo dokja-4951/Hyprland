@@ -25,3 +25,5 @@ So,before applying these to your system have a look yourself ^^
 
 
 <img width="2560" height="1438" alt="Preview" src="https://github.com/user-attachments/assets/6912ac48-864d-44ff-a7af-77c8dd962d3e" />
+<img width="2548" height="1440" alt="Preview3" src="https://github.com/user-attachments/assets/cbce0b70-ba22-4ac4-805a-d0a8abf526b4" />
+<img width="2560" height="1439" alt="Preview2" src="https://github.com/user-attachments/assets/ad1d6ad5-d9aa-4ef3-8f91-878609518e5c" />
