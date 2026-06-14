@@ -1,4 +1,3 @@
-![Uploading 20260606_21h21m59s_grim.png…]()
 # Hyprland
 Hyprland dotfiles  
 These dotfiles are not 100% my creation i just added my touch and my preferance according to my system  
@@ -23,3 +22,6 @@ For these to work properly you should have these things installed
 # ~
 I myself am new to ricing so i don't have much knowladge about all these   
 So,before applying these to your system have a look yourself ^^
+
+
+<img width="2560" height="1438" alt="Preview" src="https://github.com/user-attachments/assets/6912ac48-864d-44ff-a7af-77c8dd962d3e" />
