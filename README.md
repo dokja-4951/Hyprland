@@ -1,3 +1,4 @@
+![Uploading 20260606_21h21m59s_grim.png…]()
 # Hyprland
 Hyprland dotfiles  
 These dotfiles are not 100% my creation i just added my touch and my preferance according to my system  
