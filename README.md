@@ -1,3 +1,6 @@
+#Changed with AI
+These are config changed to Lua with the help of AI
+These may not be perfect
 # Hyprland
 Hyprland dotfiles  
 These dotfiles are not 100% my creation i just added my touch and my preferance according to my system  
