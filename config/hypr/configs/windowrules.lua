@@ -65,3 +65,13 @@ hl.window_rule({ match = { initial_title = "^Open Files$" }, size = "70% 60%" })
 -- Waydroid
 hl.window_rule({ match = { class = "^(waydroid.*)$" }, suppress_event = "maximize" })
 
+
+--Corner
+hl.config({
+    general = {
+        border_size = 0,   -- no borders on any window
+    },
+    decoration = {
+        rounding = 15,     -- corner radius in px
+    },
+})
