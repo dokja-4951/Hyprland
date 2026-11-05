@@ -1,64 +1,71 @@
-//   _____ _____ _____ _____ _____ _____ _____ _____ _____ 
-//  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
-//  |   __|     |__   | | | |   __|   __| | | |   --|     |
-//  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|  OS
-//
-//  by Bina
-
-
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "source": "arch_small", // search for logos: fastfetch --list-logos or --print-logos
-        "padding": {
-	        "top": 1,
-	        "left": 2
-	},
+    	"source": "~/.config/fastfetch/Cherry_Tree.jpg",
+    	"height": 10,
+    	"padding": {
+    		"top": 1,
+    		"left": 2,
+    		"bottom": 1,
+    		"right": 2,
+    	} 
     },
     "display": {
-        "separator": "  "
+        "separator": " "
     },
     "modules": [
-	"break",
-	"title",
         {
+            "key": "╭───────────╮",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#32}󰇅 os      {#keys}│",
             "type": "os",
-            "key": "os    ",
-        },
-        {   "type": "wm",
-            "key" : "de    ",
         },
         {
+            "key": "│ {#33}󰨇 de      {#keys}│",
+            "type": "wm"
+        },
+     
+        {
+            "key": "│ {#35} pkgs    {#keys}│",
             "type": "packages",
             "format": "{} (pacman)",
-            "key": "pkgs  ", 
-        },
-        {   "type": "shell",
-            "key": "shell ",
         },
         {
+            "key": "│ {#32} shell   {#keys}│",
+            "type": "shell"
+        },
+        {
+            "key": "│ {#33}󰍛 kernel  {#keys}│",
             "type": "kernel",
-            "key": "kernel",
         },
         {
+            "key": "│ {#34} uptime  {#keys}│",
             "type": "uptime",
             "format": "{2}h {3}m",
-            "key": "uptime",
         },
         {
+            "key": "│ {#35}󰔟 os age  {#keys}│",
             "type": "command",
-            "key": "os age",
-            "text": "birth_install=$(stat -c %W /); current=$(date +%s);    days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days"
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s);    days_difference=$(( (current - birth_install) / 86400 )); echo $days_difference days",
         },
         {
+            "key": "│ {#36} memory  {#keys}│",
             "type": "memory",
-            "key": "memory",
         },
-        "break",
         {
+            "key": "├───────────┤",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#39} colors  {#keys}│",
             "type": "colors",
             "symbol": "circle"
         },
-        "break"
+        {
+            "key": "╰───────────╯",
+            "type": "custom"
+        }
     ]
 }

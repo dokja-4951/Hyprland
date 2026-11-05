@@ -1,0 +1,235 @@
+// Fixed for Waybar 0.15+ on plain Hyprland (distro-specific modules removed). Original: HANCORE-linux/waybar-themes
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "margin-top": 1,
+  "height": 31,
+  "width": 1100,
+  "margin-bottom": 0,
+  "modules-left": [
+    "hyprland/workspaces",
+    "idle_inhibitor",
+    "custom/updatespacman"
+  ],
+  "modules-center": [
+    "mpris",
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "custom/vidcon",
+    "group/tray-expander",
+    "backlight",
+    "bluetooth",
+    "pulseaudio",
+    "network",
+    "cpu",
+    "battery"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "custom/updatespacman": {
+    "format": "{icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "󰏖",
+      "updated": "󰂪"
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}% 󰍛",
+    "on-click": "kitty -e btop"
+  },
+  "clock": {
+    "format": "{:%H:%M %a}",
+    "format-alt": "{:%d/%m/%Y  %H:%M:%S}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "mode-mon-col": 3,
+      "format": {
+        "month": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "nospacing": 1,
+    "on-click": "alacritty --class=Impala -e impala"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{capacity}% {icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "{power}",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "kitty -e bluetoothctl"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "🌑",
+      "🌘",
+      "🌗",
+      "🌖",
+      "🌕"
+    ]
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "wttrbar --nerd",
+    "return-type": "json"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon",
+      "tray"
+    ]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 12
+  },
+  "mpris": {
+    "format": "{player_icon}",
+    "format-paused": "<span color='grey'>{status_icon}</span>",
+    "max-length": 10,
+    "interval": 1,
+    "player-icons": {
+      "default": "⏸",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "▶"
+    },
+    "ignored-players": [
+      "firefox",
+      "chromium",
+      "brave"
+    ]
+  },
+  "mode": "dock",
+  "custom/vidcon": {
+    "format": "",
+    "tooltip-format": "Video converter\nQueue: ~/Videos/convert_queue",
+    "on-click": "kitty --hold -e $HOME/.config/waybar/scripts/vidcon"
+  }
+}

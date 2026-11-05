@@ -1,0 +1,271 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color ia1 @surface_container_low;
+
+* {
+
+  border-radius: 8px;
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  font-size: 13px;
+  font-weight: bold;
+  min-height: 0;
+  }
+
+/* --- Waybar ---*/
+window#waybar {
+  background-color: @bg;
+  border-bottom: 2px solid @fg;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* --- Modules --- */
+
+.modules-center {
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 5px 0px 10px 0px;
+  border-radius: 8px;
+  padding: 0px;
+ }
+
+#right {
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  border-radius: 8px;
+  margin: 5px 5px 10px 0px;
+  padding: 0px;
+}
+
+#right1 {
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  border-radius: 8px;
+  margin: 5px 5px 10px 0px;
+  padding: 0px;
+}
+
+#right2 {
+  margin-right: 6px;
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  border-radius: 8px;
+  margin: 5px 5px 10px 5px;
+  padding: 0px;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  background-color: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 5px 5px 10px 0px;
+  border-radius: 8px;
+}
+
+#workspaces button {
+  all: initial;
+  min-width: 0;
+  box-shadow: inset 0 -3px transparent;
+  color: @fg;
+  background-color: @bg;
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 8px;
+}
+#workspaces button.active {
+  background-color: @primary;
+  color: @on_primary;
+  border: 1.5px solid @primary;
+  opacity: 1;
+}
+
+#workspaces button.empty {
+  color: @fg;
+  background: @bg;
+  opacity: 0.35;
+}
+
+#workspaces button.empty.active {
+  background-color: @primary;
+  color: @on_primary;
+  border: 1.5px solid @primary;
+  opacity: 1;
+}
+
+#workspaces button:hover {
+  background-color: alpha(@primary, 0.35);
+  color: @fg;
+  opacity: 1;
+}
+
+/* --- Custom Color+Shadow Omarchy --- */
+#custom-omarchy{
+  padding: 0 6px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  color: @fg;
+  margin: 5px 5px 10px 5px;
+}
+#window{
+  padding: 0 6px;
+  background: @bg;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 5px 5px 10px 0px;
+  color: @fg;
+}
+
+/* --- General Modules --- */
+
+#cava,
+#mpris,
+#tray,
+#memory,
+#cpu,
+#battery,
+#network,
+#backlight,
+#custom-updatespacman,
+#temperature,
+#bluetooth,
+#pulseaudio,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-weather,
+#custom-update,
+#custom-screenrecording-indicator,
+#clock {
+  min-width: 18px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin: 0 2px 0 2px;
+  
+}
+
+/* --- Right module Hover color --- */
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#window:hover,
+#mpris:hover,
+#temperature:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
+#bluetooth:hover,
+#backlight:hover,
+#custom-omarchy:hover,
+#custom-weather:hover,
+#custom-update:hover,
+#idle_inhibitor:hover,
+#custom-screenrecording-indicator,
+#custom-updatespacman:hover,
+#network:hover,
+#pulseaudio:hover {
+  background-color: @fg;
+  color: @bg;
+  border-radius: 8px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+tooltip {
+ padding: 5px;
+ background: @bg;
+ font-size: 13px;
+ border: 1.5px solid alpha(@fg, 0.8);
+ border-radius: 10px;
+}
+tooltip label {
+    color: @fg;
+    font-weight: normal;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 13px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* Specific Module */
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  background-color: @bg;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @bg;
+    }
+}
+
+#battery.warning {
+  color: @primary;
+   background-color: @bg;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: @bg;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: @bg;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

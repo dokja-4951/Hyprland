@@ -1,0 +1,311 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+* {
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  min-height: 25px;
+}
+
+tooltip {
+  opacity: 1;
+
+}
+
+window#waybar {
+  background-color: @surface_container_low;
+  color: @primary;
+  border-radius: 12px;
+}
+
+#custom-omarchy {
+  font-size: 18px;
+  margin: 4px 5px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background-color: @surface_container;
+}
+
+#workspaces {
+  margin: 4px 2px;
+  padding: 0 1px;
+  background-color: @surface_container;
+  margin-left: 0px;
+}
+
+#workspaces button {
+  margin: 0px 0px;
+  padding: 0 5px;
+  background-color: transparent;
+  color: @primary;
+  border-radius: 8px;
+  transition: 0.15s ease-in-out;
+}
+
+#workspaces button:hover {
+  background: @surface_container_highest;
+  color: @surface_container_lowest;
+}
+
+#workspaces button.active {
+  background-color: @error;
+  color: @surface_container_lowest;
+  margin: 0px 0px;
+  padding: 0 5px;
+
+}
+
+#workspaces button.empty {
+  color: alpha(@primary, 0.4);
+  opacity: 0.45;
+  transition: all 0.15s ease-in-out;
+}
+
+#workspaces button.empty.active {
+  background-color: @primary;
+  color: @surface_container_lowest;
+}
+
+#window,
+#clock,
+#battery,
+#cpu,
+#memory,
+#mpris,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#power-profiles-daemon,
+#tray,
+#bluetooth,
+#backlight,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-voxtype,
+#custom-voxtype.transcribing,
+#custom-voxtype.recording,
+#custom-update,
+#custom-updatespacman,
+#custom-screenrecording-indicator {
+  padding: 0 10px;
+  color: @primary;
+  margin: 4px 5px 4px 0px;
+}
+
+#tray {
+  background-color: @surface_container;
+}
+
+#window {
+  margin: 4px 2px;
+}
+
+#window, #memory, #clock, #idle_inhibitor, #custom-update, #custom-updatespacman, #custom-voxtype, #custom-voxtype.recording {
+background-color: @surface_container;
+}
+
+#battery {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @primary;
+  background-color: @surface_container;
+}
+
+@keyframes blink {
+  to {
+    background-color: @primary;
+    color: @surface_container_lowest;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: @error;
+  color: @primary;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#backlight {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#power-profiles-daemon.performance {
+  background-color: @error;
+  color: @surface_container_lowest;
+}
+
+#power-profiles-daemon.balanced {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#power-profiles-daemon.power-saver {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#cpu {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#mpris {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#network {
+  background-color: @surface_container;
+}
+
+#network.disconnected {
+  background-color: @error;
+  color: @surface_container_lowest;
+}
+
+#bluetooth {
+  background-color: @surface_container;
+}
+
+#bluetooth.disabled {
+  background-color: @error;
+  color: @surface_container_lowest;
+}
+
+#pulseaudio {
+  background-color: @surface_container;
+  color: @primary;
+}
+
+#pulseaudio.muted {
+  background-color: @error;
+  color: @surface_container_lowest;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 13px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator {
+    min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 13px;
+  padding-bottom: 0px;
+}
+
+#custom-notification-silencing-indicator.active {
+  color: @error;
+  background-color: @surface_container;
+}
+
+#custom-idle-indicator.active {
+    color: @error;
+  background-color: @surface_container;
+}
+
+tooltip {
+ padding: 5px;
+ background: @surface_container;
+ border: 1px solid alpha(@primary, 0.8);
+ border-radius: 10px;
+ box-shadow: 1px 1px 3px 1px #131313;
+ font-size: 16px;
+}
+tooltip label {
+    color: @primary;
+    font-weight: normal;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+    font-size: 16px;
+    padding: 0px;
+    margin: 6px;
+}
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+@keyframes blink-inhibitor {
+    to {
+        color: @background;
+    }
+}
+
+#idle_inhibitor {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @primary;
+ }
+
+#idle_inhibitor.activated {
+  color: @primary_container;
+  animation-name: blink-inhibitor;
+  animation-duration: 1s;
+}
+
+#mpris {
+color: @primary;
+font-size: 16px;
+margin: 4px 2px;
+animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

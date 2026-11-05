@@ -1,0 +1,162 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+* {
+  /* background-color: @background; */
+  color: @foreground;
+
+  border: none;
+  font-family: 'CaskaydiaMono Nerd Font Propo';
+  font-size: 16px;
+}
+
+window#waybar {
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar > box {
+    border-radius: 10px;
+    margin: 1px 10px 8px 10px;
+    background-color: alpha(@background, 0.8);
+    box-shadow: 4px 4px 2px 1px alpha(black, 0.8);
+}
+
+#window {
+  margin: 0;
+  padding: 0;
+  padding-top: 0px;
+  font-size: 10px;
+}
+
+.modules-left {
+  margin-left: 10px;
+  padding-top: 1px;
+}
+
+.modules-right {
+  margin-right: 10px;
+  padding-top: 1px;
+}
+
+.modules-center {
+  border-left: 1px solid alpha(@foreground, 0.2);
+  border-right: 1px solid alpha(@foreground, 0.2);
+  padding: 0 50px;
+  padding-top: 1px;
+}
+
+#workspaces {
+    padding: 0px;
+    margin: 0px;
+    margin-left: -6px;
+
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 8px;
+  margin: 0 2px;
+  min-width: 11px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#window {
+  padding-left: 10px;
+  padding: 2px;
+}
+
+#custom-omarchy {
+font-size: 18px;
+padding: 2px 0px 0px;
+}
+
+#hyprland-window,
+#tray,
+#cpu,
+#memory,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#idle_inhibitor,
+#custom-omarchy,
+#backlight,
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 2px;
+  margin: 0 9px;
+}
+
+#custom-expand-icon {
+  margin-right: 9px;
+}
+
+tooltip {
+  padding: 0px;
+}
+
+#clock, #idle_inhibitor {
+  margin-left: 11px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 15px;
+  margin-left: 11px;
+  font-size: 13px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 8px;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+tooltip {
+ padding: 5px;
+ background: @background;
+ font-size: 13px;
+ border: 2px solid alpha(@foreground, 0.64);
+ border-radius: 10px;
+ box-shadow: 1px 1px 3px 1px #131313;
+}
+tooltip label {
+    color: @foreground;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

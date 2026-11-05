@@ -14,7 +14,11 @@ post_hook = "kill -SIGUSR1 $(pidof kitty)"
 
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
+output_path = '~/.config/hypr/colors.conf'   # used by hyprlock
+
+[templates.hyprland_lua]
+input_path = '~/.config/matugen/templates/colors.lua'
+output_path = '~/.config/hypr/colors.lua'      # used by hyprland.lua
 post_hook = 'hyprctl reload'
 
 [templates.gtk3]

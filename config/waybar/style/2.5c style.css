@@ -1,0 +1,338 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color red @error;
+@define-color accent @outline_variant;
+@define-color gold @primary;
+@define-color muted @outline;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 17px;
+    font-weight: 900;
+    border: none;
+    border-radius: 0px;
+    margin: 0rem 0rem 0rem 0rem;
+    min-height: 0;
+    min-width: 0;
+}
+
+window#waybar  {
+  background-color: transparent;
+}
+
+#waybar > box {
+  margin: 2px 12px 6px 12px;
+  min-height: 31px;
+  border-radius: 8px;
+  background-color: @bg;
+box-shadow: 
+    0px 2px 4px alpha(@surface_container_lowest, 0.2),
+    0px 2px 4px alpha(@surface_container_lowest, 0.15);
+}
+
+window#waybar.empty .modules-center {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.modules-left,
+.modules-right {
+border-radius: 8px;
+padding: 0 1px;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  border-radius: 0;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background: inherit;
+}
+
+#workspaces {
+    background-color: transparent;
+    margin: 2px 1px;
+    padding: 0;
+}
+
+#workspaces button {
+    color: @fg;
+    margin: 0 2px;
+    padding: 0 8px;
+    border-radius: 8px;
+    min-width: 25px;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+    background-color: @red; 
+    color: @bg;
+    border-radius: 8px;
+}
+
+#workspaces button.empty {
+    color: @accent;
+    background-color: transparent;
+    min-width: 25px;
+    padding: 0 8px;
+}
+
+#workspaces button.empty.active {
+    background-color: alpha(@red, 0.6);
+    color: @bg;
+    min-width: 25px;
+    padding: 0 8px;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@gold, 0.4);
+    color: @bg;
+}
+
+#workspaces button.empty:hover {
+    background-color: alpha(@accent, 0.3);
+    color: @fg;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @bg;
+}
+
+#tray,
+#idle_inhibitor,
+#memory,
+#cpu,
+#battery,
+#battery.discharging,
+#battery.full,
+#battery.plugged,
+#battery.charging,
+#backlight,
+#network,
+#network.disconnected,
+#network.wifi,
+#network.ethernet,
+#bluetooth,
+#pulseaudio,
+#pulseaudio.input,
+#pulseaudio.output,
+#power-profiles-daemon,
+#power-profiles-daemon.performance,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.power-saver,
+#custom-weather,
+#custom-clock,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-screenrecording-indicator.active,
+#custom-update,
+#custom-omarchy {
+  color: @bg;
+  background: alpha(@accent, 1);
+  opacity: 1;
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 2px 1px;
+}
+
+#custom-omarchy {
+    color: @bg;
+    background-color: @red;
+    font-size: 19px;
+    padding: 0 15px;
+}
+
+#custom-clock,
+#custom-weather {
+  background-color: @muted;
+}
+
+#backlight,
+#pulseaudio {
+  padding: 0 12px 0 6px;
+}
+
+#network,
+#network.disconnected,
+#network.wifi,
+#network.ethernet {
+  padding: 0 16px 0 12px;
+}
+
+#network.wifi,
+#custom-update,
+#custom-updatespacman {
+  background-color: @muted;
+}
+
+#idle_inhibitor.deactivated {
+font-size: 17px;
+padding: 0 12px 0 6px;
+background-color: @accent;
+}
+
+#idle_inhibitor.activated {
+  font-size: 17px;
+  background-color: @red;
+    color: @bg;
+    padding: 0 12px 0 6px;
+}
+
+#memory,
+#cpu {
+  background-color: @gold;
+}
+
+#bluetooth.connected,
+#battery,
+#battery.discharging,
+#battery.full,
+#battery.plugged,
+#battery.charging {
+    background-color: @red;
+    color: @bg;
+}
+
+#power-profiles-daemon.performance {
+    background-color: @red;
+    color: @bg;
+}
+
+#custom-voxtype,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+    padding: 0 8px;       
+    margin: 2px 1px;      
+    border-radius: 8px;
+    min-width: 12px;      
+}
+
+#custom-voxtype,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @red;
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+ padding: 5px;
+ background: @bg;
+ font-size: 13px;
+ border: 1px solid @accent;
+ border-radius: 8px;
+ 
+}
+tooltip label {
+    color: alpha(@fg, 1);
+    font-weight: normal;
+}
+
+#custom-separator2,
+#custom-separator {
+  opacity: 0.25;
+  padding-bottom: 0px;
+  padding-top: 1px;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 13px;
+  color: @fg;
+}
+
+#custom-waybar-position {
+    background-color: @red;
+    color: @bg;
+    padding: 0 8px;
+    margin: 2px 1px;
+    border-radius: 8px;
+    min-width: 12px;
+}
+
+#custom-waybar-position:hover {
+    background-color: @red;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  background-color: transparent;
+  padding: 0 16px 0 12px;
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @bg;
+    }
+}
+
+#mpris {
+    color: @bg;
+    background-color: @accent;
+    margin: 2px 1px;
+    padding: 0 0px;
+    border-radius: 8px;
+    min-height: 25px;
+    font-weight: 900;
+}
+
+#mpris.playing {
+    background-color: @gold;
+}
+
+#mpris.paused {
+    background-color: @accent;
+}
+
+#network.disconnected,
+#battery.warning {
+  color: @bg;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: transparent;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning,
+#cpu.warning {
+    color: @red; 
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

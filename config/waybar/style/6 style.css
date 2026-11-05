@@ -1,0 +1,245 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+* {
+  /* background-color: @background; */
+  /* color: @foreground; */
+
+  border: none;
+  padding: 0px;
+  min-height: 0;
+  font-family: 'CaskaydiaMono Nerd Font Propo';
+  font-weight: normal;
+  font-size: 16px;
+}
+#waybar > .horizontal {
+    padding-top: 2px;
+}
+
+window#waybar  {
+  background-color: @background;
+  color: @foreground;
+  border-bottom: 2px solid alpha(@foreground, 0.9);
+  transition-property: background-color;
+  transition-duration: .5s;
+  border-left: 2px solid alpha(@foreground, 0.9);
+  border-right: 2px solid alpha(@foreground, 0.9);
+  border-radius: 8px;
+}
+
+#window {
+  text-shadow: 0px 0px 2px alpha(@foreground, 0.4);
+}
+
+#custom-omarchy {
+font-size: 17px;
+}
+
+.modules-left {
+margin-left: 10px;
+}
+.modules-center {
+  border-radius: 0;
+  padding:0 12px;
+  border-left: 1px solid alpha(@foreground, 0.2);
+  border-right: 1px solid alpha(@foreground, 0.2);
+}
+.modules-right {
+  margin-right: 10px;
+}
+
+#workspaces {
+    background: transparent;
+    margin: 4px 0px;
+    padding: 12px 8px;
+    margin-left: -6px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#workspaces button {
+    min-width: 10px;
+    min-height: 10px;
+    padding: 1;
+    margin: 0 8px;
+    border-radius: 8px;
+    background-color: alpha(@foreground, 0.75);
+    transition: all 0.15s ease-in-out;
+}
+
+#workspaces button.active,
+#workspaces button:hover {
+    background-color: @foreground;
+    min-width: 31px;
+    border-radius: 8px;
+    transition: all 0.15s ease-in-out;
+}
+#workspaces button.empty {
+    opacity: 0.45;
+}
+
+#workspaces button label {
+    font-size: 0px;
+}
+
+#workspaces button {
+    /* margin-top: 1px; */
+    /* margin-bottom: -1px; */
+    font-size: 15px;
+    background: @foreground;
+    font-weight: 800;
+}
+
+#memory,
+#mpris,
+#custom-expand-icon,
+#hyprland-window,
+#tray,
+#cpu,
+#clock,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#idle_inhibitor,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 15px;
+  padding: 0 5px;
+  margin: 1px 4px 1px 4px;
+}
+
+#custom-expand-icon {
+  margin-right: 0px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+ padding: 5px;
+ background: @background;
+ font-size: 13px;
+ border: 1px solid alpha(@foreground, 0.8);
+ border-radius: 10px;
+}
+tooltip label {
+    color: @foreground;
+    font-weight: normal;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 3px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+@keyframes blink-inhibitor {
+    to {
+        color: @background;
+    }
+}
+
+#idle_inhibitor {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @foreground;
+ }
+
+#idle_inhibitor.activated {
+  color: @primary_container;
+  animation-name: blink-inhibitor;
+  animation-duration: 1s;
+}
+
+#mpris {
+color: @foreground;
+animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+#battery.warning {
+  color: @primary;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: transparent;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

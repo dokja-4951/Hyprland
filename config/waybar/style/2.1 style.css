@@ -1,0 +1,283 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+/* --- Global-Settings ---*/
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 0px;
+  }
+
+  /* --- Waybar ---*/
+  window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+/* --- Single Module Config's ---*/
+
+#left1{
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+  margin-right: 10px;
+}
+
+#left2{
+  margin-right: 10px;
+}
+
+#left3{
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+  color: @on_surface_variant;
+  margin-right: 10px;
+}
+
+#left4{
+}
+.modules-center {
+  background-color: transparent;
+  color: @secondary;
+}
+
+#right1{
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+}
+
+#right2{
+  margin-left: 10px;
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+}
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+#mpris {
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+  color: @error;
+  min-width: 20px;
+  margin: 0px 4px 0px 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* --- Tooltip ---*/
+tooltip {
+  opacity: 1;
+
+ }
+
+/* --- Workspaces --- */
+#workspaces {
+  background-color: @surface_container_lowest;
+  border-radius: 10px;
+  border: 1px solid alpha(@on_surface, 0.15);
+}
+
+#workspaces button {
+  padding: 4px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: @on_surface;
+  opacity: 1;
+}
+
+#workspaces button.active {
+    color: @error;
+    opacity: 1;
+}
+
+#workspaces button.empty {
+  color: alpha(@on_surface, 0.4);
+  opacity: 0.45;
+  transition: all 0.15s ease-in-out;
+}
+
+#workspaces button.empty.active {
+  color: @error;
+}
+
+/* --- General Modules --- */
+
+#tray,
+#window,
+#cpu,
+#clock,
+#battery,
+#network,
+#memory,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-weather,
+#custom-update,
+#idle_inhibitor,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-updatespacman {
+  min-width: 20px;
+  margin: 1px 4px 1px 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#custom-update {
+  padding-left: 4px;
+}
+
+/* --- Module-Group-Colors --- */
+
+#custom-omarchy {
+  border-radius: 0;
+  border-right: 1px solid alpha(@on_surface, 0.15);
+  color: @primary_fixed_dim;
+  font-size: 17px;
+}
+
+#clock {
+  border-radius: 0;
+  border-right: 1px solid alpha(@on_surface, 0.15);
+  color: @primary_fixed_dim;
+}
+
+#bluetooth {
+  border-radius: 0;
+  border-right: 1px solid alpha(@on_surface, 0.15);
+  color: @secondary;
+}
+
+#memory {
+  border-radius: 0;
+  border-left: 1px solid alpha(@on_surface, 0.15);
+}
+
+#cpu {
+  color: @primary;
+}
+
+#battery {
+  color: @tertiary;
+}
+
+#backlight {
+  color: @secondary;
+}
+
+#memory {
+  color: @primary_fixed_dim;
+}
+
+#network {
+  color: @primary;
+}
+
+#pulseaudio {
+  color: @error;
+}
+
+#idle_inhibitor {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#tray {
+  color: @outline;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 1px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* Specific Module */
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @transparent;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+ padding: 5px;
+ background-color: @surface_container_lowest;
+ border: 1px solid alpha(@on_surface, 0.15);
+ border-radius: 10px;
+ font-size: 16px;
+ 
+}
+tooltip label {
+    color: @on_surface_variant;
+    font-weight: normal;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @primary;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

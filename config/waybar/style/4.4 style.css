@@ -1,0 +1,298 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+/* --- Global-Settings ---*/
+
+* {
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 0px;
+    }
+
+  /* --- Waybar ---*/
+  window#waybar {
+  background: linear-gradient(180deg, @background 75%, @foreground);
+  transition-duration: .5s;
+  border-radius: 30px;
+}
+
+/* --- Tooltip ---*/
+tooltip {
+  opacity: 1;
+
+ }
+
+ /* --- Modules ---*/
+
+.modules-left {
+  color: @foreground;
+  margin: 0px;
+  border-radius: 20px;
+  opacity: 0.95;
+  border: 2px solid alpha(@foreground, 0.8);
+  background-color: alpha(@background, 0.9);
+  margin-right: 5px;
+ }
+
+ .modules-center {
+  color: @foreground;
+  margin: 0px;
+  border-radius: 20px;
+  opacity: 0.95;
+  border: 2px solid alpha(@foreground, 0.8);
+  background-color: alpha(@background, 0.9);
+ }
+
+.modules-right {
+  color: @foreground;
+  margin: 0px;
+  border-radius: 20px;
+  opacity: 0.95;
+  border: 2px solid alpha(@foreground, 0.8);
+  background-color: alpha(@background, 0.9);
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  
+  border-radius: 30px;
+  background-color: alpha(@background, 1);
+  opacity: 0.95;
+  margin: 0px;
+  padding: 1px 1px 1px;
+}
+
+#workspaces button {
+  padding: 0px 2px;
+  margin: 1px 2px;
+  border-radius: 30px;
+  background-color: alpha(@foreground, 0.5);
+  color: @background; 
+  transition: all 0.3s ease-in-out;
+  opacity: 0.95;
+}
+
+#workspaces button.active {
+  color: @background;
+  background-color: alpha(@foreground, 0.9);
+  border-radius: 30px;
+  opacity: 1.0;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.empty {
+  background-color: alpha(@foreground, 0.4);
+  border: 1px groove alpha(@foreground, 0.9);
+  color: @foreground;
+  opacity: 0.45;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  color: @foreground;
+  border-radius: 30px;
+  opacity: 0.9;
+  background: linear-gradient(180deg, @background 75%, @foreground);
+}
+
+#workspaces button.empty.active {
+  background-color: @foreground;
+  color: @background;
+}
+
+/* --- General Modules --- */
+
+#tray,
+#group-tray-expander,
+#mpris,
+#cpu,
+#clock,
+#battery,
+#network,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#custom-weather,
+#custom-update,
+#idle_inhibitor,
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-screenrecording-indicator,
+#custom-updatespacman {
+  min-width: 18px;
+  margin: 0 5px 0 2px;
+  padding: 0 4px;
+}
+
+/* --- Hover right module  --- */
+#clock:hover,
+#tray:hover,
+#custom-expand-icon:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#bluetooth:hover,
+#custom-omarchy:hover,
+#custom-weather:hover,
+#custom-update:hover,
+#idle_inhibitor:hover,
+#custom-screenrecording-indicator,
+#custom-updatespacman:hover,
+#network:hover,
+#pulseaudio:hover {
+  color: @foreground;
+  border-radius: 8px;
+  opacity: 0.9;
+  background: linear-gradient(180deg, @background 75%, @foreground);
+}
+
+/* Specific Module */
+
+#custom-update, #idle_inhibitor, #custom-update, #custom-screenrecording-indicator, #custom-updatespacman {
+  color: @background;
+  background-color: alpha(@foreground, 0.9);
+  border-radius: 30px;
+  opacity: 1.0;
+  transition: all 0.3s ease-in-out;
+  padding: 0px 4px;
+  margin: 2px 4px;
+}
+
+#group-tray-expander {
+  background-color: @background;
+  color: @foreground;
+  border-radius: 30px;
+}
+
+#custom-expand-icon {
+padding: 0px 2px;
+margin-left: 5px;
+}
+
+#tray {
+  background-color: @background;
+  margin: 0 12px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @transparent;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 3px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 0 2px;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+tooltip {
+ padding: 5px;
+ background-color: alpha(@background, 1);
+ opacity: 0.95;
+ font-size: 13px;
+ border: 2px solid alpha(@foreground, 0.8);
+ border-radius: 30px;
+ box-shadow: 1px 1px 3px 1px #131313;
+ font-size: 16px;
+ 
+}
+tooltip label {
+    color: @foreground;
+    font-weight: normal;
+}
+
+#mpris {
+color: @foreground;
+animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+@keyframes blink-inhibitor {
+    to {
+        color: @background;
+    }
+}
+
+#idle_inhibitor {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+   margin-left: 1px;
+   margin-right: 1px;
+ }
+
+#idle_inhibitor.activated {
+  margin-right: 1px;
+  color: @primary_container;
+  animation-name: blink-inhibitor;
+  animation-duration: 1s;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

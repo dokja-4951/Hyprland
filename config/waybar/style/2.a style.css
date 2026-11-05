@@ -1,0 +1,193 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+/* ============================= */
+/* COLOR DEFINITIONS (RETRO-CP)  */
+/* ============================= */
+@define-color cp-black @surface_container_lowest;
+@define-color cp-red @error;
+@define-color cp-orange @primary;
+@define-color cp-green @outline;
+@define-color cp-gray @on_surface_variant;
+@define-color cp-cream @on_surface;
+@define-color cp-dark @surface;
+
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+box,
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================= */
+/* WAYBAR WINDOW */
+/* ============================= */
+
+window#waybar {
+  background-color: transparent;
+  border: none;
+  margin-top: 10px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @cp-black;
+  border: 5px solid @cp-black;
+  border-radius: 8px;
+}
+
+/* ============================= */
+/* MODULE BASE STYLE */
+/* ============================= */
+
+#tray, #window, #mpris, #cpu, #clock, #battery, #network, 
+#memory, #backlight, #bluetooth, #pulseaudio, #custom-weather, 
+#custom-update, #idle_inhibitor, #custom-omarchy, #custom-voxtype,
+#custom-updatespacman {
+  margin: 0 2px;
+  padding: 0 10px;
+  min-width: 18px;
+  border-radius: 8px;
+}
+
+/* ============================= */
+/* WORKSPACES */
+/* ============================= */
+
+#workspaces button {
+  margin: 0 2px 0 0;
+  padding: 0 5px;
+  border-radius: 8px;
+  background-color: @cp-dark;
+  color: @cp-gray;
+}
+
+#workspaces button.active {
+  background-color: @cp-orange;
+  color: @cp-black;
+}
+
+#workspaces button:hover {
+  background-color: @cp-red;
+  color: @cp-black;
+}
+
+/* ============================= */
+/* COLORS & MODULES */
+/* ============================= */
+
+#window {
+  background-color: @cp-cream;
+  color: @cp-black;
+}
+
+#custom-omarchy {
+  background-color: @cp-red;
+  color: @cp-dark;
+  font-size: 24px;
+}
+
+/* Priority Info (Updates/CPU) */
+#custom-update, #custom-updatespacman, #cpu {
+  background-color: @cp-orange;
+  color: @cp-black;
+}
+
+/* Utility Info (Clock/Tray) */
+#clock, #idle_inhibitor, #custom-weather, #tray {
+  background-color: @cp-dark;
+  color: @cp-cream;
+}
+
+/* System Stats */
+#battery {
+  background-color: @cp-green;
+  color: @cp-black;
+}
+
+#memory {
+  background-color: @cp-gray;
+  color: @cp-black;
+}
+
+#network {
+  background-color: @cp-green;
+  color: @cp-black;
+}
+
+#pulseaudio {
+  background-color: @cp-red;
+  color: @cp-black;
+}
+
+#backlight {
+  background-color: @cp-gray;
+  color: @cp-black;
+}
+
+#bluetooth {
+  background-color: @cp-gray;
+  color: @cp-black;
+}
+
+/* ============================= */
+/* HOVER EFFECTS */
+/* ============================= */
+
+#clock:hover, #cpu:hover, #memory:hover, #battery:hover, #network:hover, #pulseaudio:hover {
+  background-color: @cp-cream;
+  color: @cp-black;
+}
+
+/* ============================= */
+/* WARNINGS & CRITICAL */
+/* ============================= */
+
+#cpu.critical, #memory.critical, #battery.critical {
+  background-color: @cp-red;
+  color: @cp-cream;
+  animation: blink-warning 0.5s linear infinite alternate;
+}
+
+@keyframes blink-warning {
+  to { background-color: @cp-black; color: @cp-red; }
+}
+
+/* ============================= */
+/* TOOLTIP */
+/* ============================= */
+
+tooltip {
+  background-color: @cp-dark;
+  border: 1px solid @cp-orange;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: @cp-cream;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

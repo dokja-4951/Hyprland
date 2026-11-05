@@ -1,0 +1,245 @@
+#!/bin/bash
+
+# This script looks for video files in a specified directory and re-encodes them to codecs selected by the user
+
+set -u
+shopt -s nullglob
+
+# Media folders
+
+# Input folder - here you put videos that you want to convert
+media_in="$HOME/Videos/convert_queue"
+
+# Output folder - directory for storing converted videos
+media_out="$HOME/Videos/converted"
+
+# Desktop notifications
+
+# Specify what icons to use
+icons_dir="/usr/share/icons/Papirus/64x64/places"
+icon_success="folder-cat-mocha-blue-video.svg"
+icon_error="folder-cat-mocha-peach-video.svg"
+
+notify_success () {
+    echo "$1 ${2:-}"
+    command -v notify-send &> /dev/null && notify-send -i "$icons_dir/$icon_success" "$1" "${2:-}"
+}
+
+notify_error () {
+    echo "$1 ${2:-}" >&2
+    command -v notify-send &> /dev/null && notify-send -u critical -i "$icons_dir/$icon_error" "$1" "${2:-}"
+}
+
+invalid_choice () {
+    notify_error "You entered an invalid value" "Try running the script again."
+    exit 1
+}
+
+# Create input and output directories (won't be an issue if they already exist)
+mkdir -p "$media_in" "$media_out"
+
+# Check if ffmpeg and ffprobe are installed on the user's system
+for tool in ffmpeg ffprobe; do
+    if ! command -v "$tool" &> /dev/null; then
+        notify_error "$tool not found" "You need to install $tool to use this script."
+        exit 2
+    fi
+done
+
+# Check if input directory is empty (hidden files are ignored)
+queue=("$media_in"/*)
+if (( ${#queue[@]} == 0 )); then
+    notify_error "The queue is empty" "There are currently no videos in the queue."
+    exit 3
+fi
+
+# Display the main menu
+
+echo "-------------------------"
+echo "What would you like to do?"
+echo "-------------------------"
+echo "1) Import an incompatible video"
+echo "2) Render the final video"
+echo "3) Exit the script"
+
+# Store user input in a variable
+read -rp "> " main_choice
+
+# use_gop=1 means a keyframe interval (-g) is added per file, based on its framerate
+use_gop=0
+
+case $main_choice in
+    1)  # Set input codecs that will be converted
+        input_codecs=("h264" "hevc")
+
+        # Audio for editing: AAC is not supported by many Linux editors, so it becomes PCM
+        audio_mode="edit"
+
+        # Display the codec selection menu
+        echo "----------------------------------------"
+        echo "Select the output codec for queued videos"
+        echo "----------------------------------------"
+        echo "1) DNxHR HQX"
+        echo "2) AV1"
+        echo "3) MPEG-4 part 2"
+        echo "4) Exit the script"
+
+        # Store user input in a variable
+        read -rp "> " encoder_choice
+
+        # Set ffmpeg arguments depending on the selected codec
+        case $encoder_choice in
+            1)  # DNxHR HQX
+                video_enc=(-c:v dnxhd -profile:v 4 -pix_fmt yuv422p10le)
+                # Replace the above variable with the one below if you don't need 10-bit color depth
+                # video_enc=(-c:v dnxhd -profile:v 3 -pix_fmt yuv422p)
+                out_format="mov"
+                ;;
+            2)  # AV1
+                video_enc=(-c:v libsvtav1 -preset 6 -crf 23 -pix_fmt yuv420p10le)
+                out_format="mp4"
+                use_gop=1
+                ;;
+            3)  # MPEG-4 part 2
+                video_enc=(-c:v mpeg4 -q:v 2)
+                out_format="mov"
+                ;;
+            4) echo "Exiting..." ; exit 0;;
+            *) invalid_choice;;
+        esac
+        ;;
+    2)  # Set input codecs that will be converted
+        input_codecs=("dnxhd" "prores")
+
+        # Audio for the final video: PCM doesn't belong in MP4, so anything but AAC is encoded to AAC
+        audio_mode="final"
+
+        # Display the codec selection menu
+        echo "----------------------------------------"
+        echo "Select the output codec for queued videos"
+        echo "----------------------------------------"
+        echo "1) H.264"
+        echo "2) H.265"
+        echo "3) AV1"
+        echo "4) Exit the script"
+
+        # Store user input in a variable
+        read -rp "> " encoder_choice
+
+        # Set ffmpeg arguments depending on the selected codec
+        case $encoder_choice in
+            1)  # H.264/AVC
+                video_enc=(-c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -movflags +faststart)
+                out_format="mp4"
+                ;;
+            2)  # H.265/HEVC (hvc1 tag makes the file playable on Apple devices)
+                video_enc=(-c:v libx265 -preset slow -crf 20 -tag:v hvc1 -movflags +faststart)
+                out_format="mov"
+                ;;
+            3)  # AV1
+                video_enc=(-c:v libsvtav1 -preset 3 -crf 25 -pix_fmt yuv420p10le -svtav1-params tune=0:fast-decode=1 -movflags +faststart)
+                out_format="mp4"
+                use_gop=1
+                ;;
+            4) echo "Exiting..." ; exit 0;;
+            *) invalid_choice;;
+        esac
+        ;;
+    3) echo "Exiting..." ; exit 0;;
+    *) invalid_choice;;
+esac
+
+# Returns 0 if the given codec is one of the input codecs chosen above
+is_input_codec () {
+    local c
+    for c in "${input_codecs[@]}"; do
+        [[ $1 == "$c" ]] && return 0
+    done
+    return 1
+}
+
+# Select the files that should be converted
+files=()
+for file in "${queue[@]}"; do
+    [[ -f $file ]] || continue
+    video_codec="$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$file")"
+    if is_input_codec "$video_codec"; then
+        files+=("$file")
+    fi
+done
+
+# The number of videos that will actually be converted
+total=${#files[@]}
+
+if (( total == 0 )); then
+    notify_error "Nothing to convert" "No videos in the queue use a codec that this option converts."
+    exit 3
+fi
+
+# Encoding
+
+file_index=0
+failed=0
+
+for file in "${files[@]}"; do
+
+    # Set additional variables for each video file
+    file_name="$(basename "$file")"
+    out_file="$media_out/${file_name%.*}.$out_format"
+    file_index=$(( file_index + 1 ))
+
+    # Never overwrite an existing file
+    if [[ -e $out_file ]]; then
+        notify_error "Skipping $file_name" "$out_file already exists."
+        failed=$(( failed + 1 ))
+        continue
+    fi
+
+    audio_codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$file")"
+
+    # Update ffmpeg arguments for the AV1 encoder based on a video's framerate (keyframe every 10 seconds)
+    gop_args=()
+    if (( use_gop )); then
+        frame_rate="$(ffprobe -v error -select_streams v:0 -show_entries stream=avg_frame_rate -of default=noprint_wrappers=1:nokey=1 "$file")"
+        fr_num="${frame_rate%/*}"
+        fr_den="${frame_rate#*/}"
+        if [[ $fr_num =~ ^[0-9]+$ && $fr_den =~ ^[0-9]+$ ]] && (( fr_den > 0 )); then
+            fps=$(( (fr_num + fr_den / 2) / fr_den ))
+        else
+            fps=30
+        fi
+        (( fps < 1 )) && fps=30
+        gop_args=(-g "$(( fps * 10 ))")
+    fi
+
+    # Set ffmpeg arguments for encoding audio
+    if [[ $audio_mode == "edit" ]]; then
+        # Editors on Linux handle PCM best, so anything that isn't already PCM (aac, opus, mp3, ac3...) is converted
+        if [[ $audio_codec == pcm_* ]]; then
+            audio_enc=(-c:a copy)
+        else
+            audio_enc=(-c:a pcm_s16le)
+        fi
+    else
+        if [[ $audio_codec == "aac" ]]; then
+            audio_enc=(-c:a copy)
+        else
+            audio_enc=(-c:a aac -b:a 320k)
+        fi
+    fi
+
+    # Convert the videos
+    notify_success "Converting... $file_index/$total" "$file_name"
+    if ! ffmpeg -hide_banner -nostdin -n -i "$file" "${video_enc[@]}" "${gop_args[@]}" "${audio_enc[@]}" "$out_file"; then
+        notify_error "Conversion failed" "Couldn't convert $file_name."
+        rm -f "$out_file"
+        failed=$(( failed + 1 ))
+    fi
+done
+
+# Send a desktop notification once the conversion is finished
+if (( failed == 0 )); then
+    notify_success "Converting finished" "The videos have been successfully converted."
+else
+    notify_error "Converting finished with errors" "$failed of $total videos were skipped or failed."
+fi

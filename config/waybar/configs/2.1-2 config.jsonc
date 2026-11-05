@@ -1,0 +1,266 @@
+// Fixed for Waybar 0.15+ on plain Hyprland (distro-specific modules removed). Original: HANCORE-linux/waybar-themes
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "margin-left": 5,
+  "margin-right": 5,
+  "margin-top": 4,
+  "modules-left": [
+    "custom/weather",
+    "clock",
+    "tray",
+    "power-profiles-daemon",
+    "idle_inhibitor",
+    "bluetooth",
+    "backlight",
+    "battery",
+    "hyprland/window",
+    "mpris"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "custom/vidcon",
+    "memory",
+    "cpu",
+    "pulseaudio",
+    "disk",
+    "network"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "cursor": true,
+    "format-icons": {
+      "active": "󰮯",
+      "default": "󰊠",
+      "empty": "󱙝"
+    },
+    "persistent-workspaces": {
+      "*": 6
+    }
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "󰾆"
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "tooltip-format-activated": "Stay Awake: ON",
+    "tooltip-format-deactivated": "Stay Awake: OFF",
+    "format-icons": {
+      "activated": "󰛨",
+      "deactivated": "󰛩"
+    }
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 4
+  },
+  "mpris": {
+    "format": "{dynamic}",
+    "format-paused": " {status_icon} {dynamic}",
+    "format-disabled": "",
+    "interval": 5,
+    "dynamic-order": [
+      "artist",
+      "position",
+      "length"
+    ],
+    "dynamic-importance-order": [
+      "position",
+      "length",
+      "artist"
+    ],
+    "tooltip-format": "{player} ({status}):\n{artist} - {title}"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "MEM {icon} {percentage:02}%",
+    "format-icons": [
+      "<span size='13pt' color='#6e6a86'>░░░░░░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>█░░░░░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>██░░░░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>███░░░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>████░░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>█████░░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>██████░░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>███████░░░</span>",
+      "<span size='13pt' color='#c4a7e7'>████████░░</span>",
+      "<span size='13pt' color='#c4a7e7'>█████████░</span>",
+      "<span size='13pt' color='#c4a7e7'>██████████</span>"
+    ],
+    "on-click": "kitty -e btop"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {icon} {usage:02}%",
+    "format-icons": [
+      "<span size='13pt' color='#6e6a86'>░░░░░░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>█░░░░░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>██░░░░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>███░░░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>████░░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>█████░░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>██████░░░░</span>",
+      "<span size='13pt' color='#ebbcba'>███████░░░</span>",
+      "<span size='13pt' color='#ebbcba'>████████░░</span>",
+      "<span size='13pt' color='#ebbcba'>█████████░</span>",
+      "<span size='13pt' color='#ebbcba'>██████████</span>"
+    ],
+    "on-click": "kitty -e btop"
+  },
+  "pulseaudio": {
+    "format": "VOL {icon} {volume}%",
+    "format-icons": [
+      "<span size='13pt' color='#6e6a86'>░░░░░░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>█░░░░░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>██░░░░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>███░░░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>████░░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>█████░░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>██████░░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>███████░░░</span>",
+      "<span size='13pt' color='#9ccfd8'>████████░░</span>",
+      "<span size='13pt' color='#9ccfd8'>█████████░</span>",
+      "<span size='13pt' color='#9ccfd8'>██████████</span>"
+    ],
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "DISK ░░░░░░░░░░ {percentage_used}%",
+    "format-low": "DISK ██░░░░░░░░ {percentage_used}%",
+    "format-medium": "DISK ████░░░░░░ {percentage_used}%",
+    "format-warning": "DISK ██████░░░░ {percentage_used}%",
+    "format-critical": "DISK ████████░░ {percentage_used}%",
+    "states": {
+      "low": 20,
+      "medium": 40,
+      "warning": 60,
+      "critical": 80
+    }
+  },
+  "bluetooth": {
+    "format": "BT{num_connections}",
+    "format-disabled": "BT",
+    "format-off": "BT",
+    "format-connected": "BT{num_connections}",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "kitty -e bluetoothctl"
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "NET",
+    "format-wifi": "NET {essid}",
+    "format-ethernet": "NET {ifname}",
+    "format-disconnected": "NET",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "ETHERNET",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "interval": 1800,
+    "exec": "wttrbar --nerd",
+    "return-type": "json"
+  },
+  "battery": {
+    "format": "BAT {capacity}%",
+    "format-discharging": "BAT {capacity}%",
+    "format-charging": "BAT {capacity}%",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "BAT FULL",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%\n{timeTo}",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%\n{timeTo}",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "backlight": {
+    "format": "BL {percent}%",
+    "tooltip": true,
+    "tooltip-format": "Brightness:  {percent}%",
+    "format-alt": "{icon}",
+    "format-alt-click": "click-right",
+    "format-icons": [
+      "󰃜",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-scroll-down": "brightnessctl s 5%-",
+    "on-scroll-up": "brightnessctl s +5%"
+  },
+  "hyprland/window": {
+    "format": "{class}",
+    "max-length": 25
+  },
+  "clock": {
+    "format": "{:%A %H:%M %p}",
+    "interval": 60,
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 2,
+      "format": {
+        "month": "<span color='#f6c177'><b>{}</b></span>",
+        "weekdays": "<span color='#c4a7e7'><b>{}</b></span>",
+        "today": "<span color='#eb6f92'><b>{}</b></span>"
+      }
+    }
+  },
+  "mode": "dock",
+  "custom/vidcon": {
+    "format": "",
+    "tooltip-format": "Video converter\nQueue: ~/Videos/convert_queue",
+    "on-click": "kitty --hold -e $HOME/.config/waybar/scripts/vidcon"
+  }
+}

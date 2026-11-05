@@ -1,0 +1,234 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+* {
+  /* background-color: @background; */
+  /* color: @foreground; */
+  border: none;
+  /* border-radius: 8px; */
+  font-family: 'CaskaydiaMono Nerd Font Propo';
+  font-size: 16px;
+  min-height: 0;
+}
+
+tooltip {
+  opacity: 1;
+
+ }
+
+ window#waybar {
+  background-color: transparent;
+  color: @foreground;
+}
+
+window#waybar.empty #window{
+  background: transparent;
+  color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#waybar > box {
+    border-radius: 10px;
+    margin: 1px 5px 5px 5px;
+    background-color: @background;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 1);
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-right {
+  margin: 5px 5px;
+  border-radius: 10px;
+  border: 2px solid @foreground;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modules-center {
+  margin: 5px 0px;
+  padding: 2px;
+  border-radius: 10px;
+  border: 2px solid @foreground;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#window {
+  margin: 5px 0px;
+  padding: 0 2px;
+  border-radius: 10px;
+  border: 2px solid @foreground;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#workspaces {
+    margin: 5px 5px 5px 5px;
+    padding: 1px 0px 1px;
+    border-radius: 12px;
+    background-color: @foreground;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    opacity: 0.95;
+}
+
+#workspaces button {
+    padding: 0px 12px 0px;
+    margin: 1px 2px 1px 2px;
+    border-radius: 10px;
+    background-color: @background;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: @foreground;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.6;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    border-radius: 10px;
+    min-width: 38px;
+    opacity: 1.0;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+    color: @foreground;
+    background: @background;
+    border-radius: 10px;
+    min-width: 38px;
+    opacity: 0.9;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#hyprland-window,
+#tray,
+#group-tray-expander,
+#cpu,
+#memory,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#backlight,
+#clock,
+#idle_inhibitor,
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 18px;
+  margin: 0 2px 0 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+tooltip {
+  padding: 0px;
+}
+
+#custom-omarchy {
+  font-size: 18px;
+  margin: 0 0 0 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+#custom-expand-icon {
+padding: 0px 2px;
+margin-left: 5px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 3px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+tooltip {
+ padding: 5px;
+ background: @background;
+ font-size: 13px;
+ border: 1px solid alpha(@foreground, 0.8);
+ border-radius: 10px;
+ box-shadow: 1px 1px 3px 1px #131313;
+ font-weight: lighter;
+}
+tooltip label {
+    color: @foreground;
+    font-weight: normal;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+@keyframes blink-inhibitor {
+    to {
+        color: @background;
+    }
+}
+
+#idle_inhibitor {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @foreground;
+ }
+
+#idle_inhibitor.activated {
+  color: @primary_container;
+  animation-name: blink-inhibitor;
+  animation-duration: 1s;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

@@ -1,0 +1,157 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color bg alpha(@surface_container_low, 0.92);
+@define-color pill @surface_container_high;
+@define-color fg @foreground;
+@define-color accent @primary;
+
+* {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  font-size: 14px;
+  font-weight: bold;
+  min-height: 0;
+  transition: background-color .25s ease-out, color .25s ease-out;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar.hidden { opacity: 0.2; }
+
+/* --- Three floating islands --- */
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @bg;
+  border-radius: 16px;
+  border: 1px solid alpha(@outline_variant, 0.6);
+  padding: 3px 4px;
+  margin: 0 4px;
+  min-height: 30px;
+}
+
+.modules-right { border-color: transparent; background-color: transparent; }
+
+#left, #right, #center {
+  background: transparent;
+  margin: 0;
+}
+
+/* --- Workspaces --- */
+button {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+button:hover { background: inherit; }
+
+#workspaces {
+  background: transparent;
+  margin: 0 2px 0 0;
+}
+
+#workspaces button {
+  color: @on_surface_variant;
+  background-color: transparent;
+  padding: 2px 12px;
+  margin: 0 2px;
+  border-radius: 12px;
+  font-size: 13px;
+  transition: all .25s ease-out;
+}
+
+#workspaces button.empty { opacity: 0.45; }
+
+#workspaces button.active,
+#workspaces button.empty.active {
+  background-color: @accent;
+  color: @on_primary;
+  opacity: 1;
+  padding: 2px 16px;
+}
+
+#workspaces button:hover {
+  background-color: alpha(@accent, 0.25);
+  color: @fg;
+  opacity: 1;
+}
+
+/* --- Module pills --- */
+#tray,
+#mpris,
+#memory,
+#cpu,
+#battery,
+#network,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-updatespacman,
+#clock,
+#custom-vidcon {
+  color: @fg;
+  background-color: @pill;
+  border-radius: 12px;
+  padding: 0 12px;
+  margin: 0 2px;
+  min-height: 28px;
+  min-width: 16px;
+}
+
+#clock {
+  background-color: @accent;
+  color: @on_primary;
+  padding: 0 14px;
+}
+
+#tray { padding: 0 10px; background-color: transparent; }
+#custom-updatespacman { background-color: transparent; color: @tertiary; }
+#custom-updatespacman:hover, #clock:hover, #custom-vidcon:hover { background-color: alpha(@accent, 0.3); color: @fg; }
+
+#memory, #cpu { min-width: 62px; }
+#bluetooth, #backlight, #pulseaudio, #network, #battery { min-width: 58px; }
+
+#pulseaudio.muted { color: @error; }
+
+#custom-windowpill {
+  min-width: 90px;
+  padding: 0 10px;
+}
+
+#custom-separator {
+  opacity: 0.25;
+  padding: 0 4px;
+  color: @outline;
+}
+
+tooltip {
+  padding: 6px 8px;
+  background: @surface_container;
+  font-size: 13px;
+  border: 1.5px solid alpha(@accent, 0.7);
+  border-radius: 12px;
+}
+tooltip label { color: @fg; font-weight: normal; }
+
+/* --- Now playing: soft pulse --- */
+#mpris {
+  color: @secondary;
+  animation: blink 3s linear infinite alternate;
+}
+@keyframes blink { to { color: @on_surface_variant; } }
+
+/* --- Battery states --- */
+#battery.charging { color: @tertiary; }
+#battery.warning:not(.charging) { color: @primary; }
+#battery.critical:not(.charging) {
+  color: @error;
+  animation: blink2 .5s steps(12) infinite alternate;
+}
+@keyframes blink2 { to { background-color: @error; color: @on_error; } }
+
+#custom-vidcon { padding: 0 12px; }
+.hidden { opacity: 0; }

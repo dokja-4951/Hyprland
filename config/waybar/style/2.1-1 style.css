@@ -1,0 +1,230 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+/* --- Global-Settings ---*/
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  font-weight: 800;
+  min-height: 0px;
+  border-radius:8px;
+  }
+
+  /* --- Waybar ---*/
+  window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+#waybar > box {
+  margin: 5px 12px;
+  padding: 1px;
+  background-color: @surface_container_lowest; 
+  border: 1px solid alpha(@surface_container_highest, 0.3); 
+  box-shadow: 
+     inset 3px 0 0 0px @tertiary,
+   inset -3px 0 0 0 @primary_fixed_dim,
+  0px 1px 2px alpha(@surface_container_lowest, 0.6);
+}
+
+/* --- Single Module Config's ---*/
+#left1, #left2, #left3, #left4, 
+#right1, #right2, 
+.modules-center {
+  margin: 0px 2px;
+  padding: 0 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+#left1 {
+  background-color: @surface_container; 
+  border-radius: 8px;
+}
+
+#left2 {
+background-color: @surface_container; 
+  box-shadow: inset 0 -3px 0 0 @error;
+  padding: 0px;
+}
+
+#left3 {
+background-color: @surface_container_low; 
+  box-shadow: inset 0 -3px 0 0 @secondary_container;
+}
+
+.modules-center {
+  background-color: @surface_container_low;
+  box-shadow: inset 0 -3px 0 0 @secondary;
+  padding: 0px;
+}
+
+#right1 {
+  background-color: @surface_container_low; 
+  box-shadow: inset 0 -3px 0 0 @on_surface_variant;
+}
+
+#right2 {
+  background-color: @surface_container; 
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+}
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+#mpris {
+  background-color: @surface_container_low; 
+  box-shadow: inset 0 -3px 0 0 @primary;
+  color: @primary;
+}
+
+#workspaces {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+#workspaces button {
+  color: @on_surface_variant;
+  padding: 0 10px;
+  margin: 2px 2px;
+  transition: all 0.2s ease;
+  opacity: 0.75;
+}
+
+#workspaces button.active {
+  color: @error;
+}
+
+#workspaces button.empty {
+  color: @outline;
+  opacity: 0.2;
+}
+
+#workspaces button.empty.active {
+  color: @primary;
+  opacity: 1;
+}
+
+#workspaces button:hover {
+  background-color: alpha(@surface_container_highest, 0.5);
+  color: @on_surface;
+}
+
+#workspaces button.urgent {
+  color: @surface_container_lowest;
+  background-color: @error;
+}
+
+/* --- General Modules --- */
+
+#tray,
+#window,
+#cpu,
+#clock,
+#battery,
+#network,
+#memory,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-weather,
+#custom-update,
+#idle_inhibitor,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-updatespacman {
+  min-width: 20px;
+  margin: 0 2px;      
+  padding: 0 5px;
+}
+
+#custom-update {
+  padding-left: 4px;
+}
+
+/* --- Module-Group-Colors --- */
+
+#custom-omarchy { color: @primary_fixed_dim; } 
+#clock { color: @on_surface; } 
+#cpu { color: @primary; } 
+#memory { color: @tertiary; } 
+#pulseaudio { color: @error; }
+#network { color: @secondary; } 
+#battery { color: @secondary_container; }
+#backlight { color: @primary_fixed_dim; }
+#idle_inhibitor.activated { color: @primary_fixed_dim; }
+#idle_inhibitor.deactivated { color: @outline; }
+#tray { color: @outline; }
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 1px;
+}
+
+/* Specific Module */
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @transparent;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+  background-color: @surface_container_lowest;
+  border: 1px solid @outline_variant;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: @on_surface;
+  padding: 5px;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator.active {
+  color: @primary;
+  animation: blink-recording 0.5s infinite alternate linear;
+}
+
+@keyframes blink-recording {
+  to { color: transparent; }
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

@@ -1,0 +1,125 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: 700;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+window#waybar { background: transparent; }
+
+.modules-left,
+.modules-right {
+  background-color: @surface_container_lowest;
+  border-radius: 32px;
+  margin: 0px 10px 4px 10px;
+  padding: 2px 8px;
+  border: 1px solid alpha(@on_surface, 0.3);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+.modules-left > *,
+.modules-right > * { margin: 0 3px; }
+
+.modules-center {
+  background-color: @surface_container_lowest;
+  border-radius: 32px;
+  margin: 0px 10px 4px 10px;
+  padding: 2px 10px;
+  border: 1px solid alpha(@on_surface, 0.3);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+/* Workspace buttons */
+#workspaces label {
+  font-size: 17px;
+}
+
+#workspaces button {
+  color: @secondary;
+  padding: 0 10px;
+  margin: 0;
+}
+
+#workspaces button.active {
+  color: @primary_fixed_dim;
+}
+
+#workspaces button.empty {
+  color: @error;
+}
+
+#workspaces button.empty.active {
+  color: @outline;
+}
+
+#workspaces button:hover {
+  color: @on_surface;
+  background-color: transparent;
+}
+
+#workspaces button.urgent {
+  color: @error;
+}
+
+/* Module spacing */
+#custom-omarchy, #custom-weather, #clock, #custom-voxtype,
+#custom-idle-indicator, #custom-notification-silencing-indicator,
+#custom-screenrecording-indicator, #custom-update, #tray,
+#power-profiles-daemon, #idle_inhibitor, #backlight, #battery,
+#window, #mpris, #memory, #cpu, #pulseaudio,
+#bluetooth, #network, #disk { padding: 0 8px; }
+
+/* Left modules - colors */
+#custom-omarchy { color: @primary_fixed_dim; font-size: 16px; }
+#custom-weather { color: @on_surface; }
+#clock { color: @primary; }
+#custom-voxtype { color: @outline; }
+#custom-idle-indicator, #custom-notification-silencing-indicator { color: @outline; }
+#custom-screenrecording-indicator { color: @outline; }
+#custom-update { color: @error; }
+#tray { color: @outline; }
+#power-profiles-daemon { color: @primary_fixed_dim; }
+#idle_inhibitor { color: @outline; }
+#idle_inhibitor.activated { color: @primary_fixed_dim; }
+#backlight { color: @on_surface_variant; }
+#battery { color: @error; }
+#window { color: @on_surface_variant; }
+#mpris { color: @secondary; }
+
+/* Right modules - colors */
+#memory { color: @tertiary; }
+#cpu { color: @primary; }
+#pulseaudio { color: @secondary; }
+#bluetooth { color: @outline; }
+#bluetooth.connected { color: @secondary; }
+#network { color: @primary_fixed_dim; }
+#network.disconnected { color: @outline; }
+#disk { color: @error; }
+
+/* State overrides */
+#mpris.paused { color: @outline; }
+#custom-voxtype.recording, #custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active { color: @error; }
+#custom-screenrecording-indicator.active { color: @error; animation: blink-recording 0.5s infinite alternate linear; }
+#power-profiles-daemon.performance { color: @error; }
+#power-profiles-daemon.balanced { color: @primary_fixed_dim; }
+#power-profiles-daemon.power-saver { color: @secondary; }
+
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+.hidden { opacity: 0; }
+
+tooltip { background-color: @surface_container_low; border: 1px solid @surface_container_highest; border-radius: 8px; }
+tooltip label { color: @on_surface; padding: 4px; }
+
+@keyframes blink-recording { to { color: transparent; } }
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}
