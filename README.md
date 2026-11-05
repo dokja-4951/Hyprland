@@ -22,8 +22,7 @@ matugen image ~/Pictures/wallpapers/<wallpaper>.png
 
 ## Important
 For these to work properly you should have these things installed   
-[ Hyprland, waybar, matugen, awww, rofi, swaync, kitty, wlogout, hyprlock, hypridle,
-cava, fastfetch, clipse, pavucontrol, nm-applet, blueman, JetBrainsMono Nerd Font. ]
+[ Hyprland, waybar, matugen, awww, rofi, swaync, kitty, wlogout, hyprlock, hypridle, fastfetch, clipse, pavucontrol, JetBrainsMono Nerd Font. ]
 
 
 
