@@ -1,0 +1,260 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color rd1 @error;
+@define-color ia1 @surface_container_low;
+
+* {
+
+  border-radius: 8px;
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 0;
+  }
+
+/* --- Waybar ---*/
+window#waybar {
+  background-color: transparent;
+  border-bottom: 0px;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* --- Modules --- */
+.modules-left {
+  margin-left: 6px;
+}
+
+.modules-center {
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 1px 10px 2px 0px;
+  border-radius: 8px;
+  padding: 0px;
+ }
+
+.modules-right {
+  background: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  border-radius: 8px;
+  margin: 1px 10px 2px 0px;
+  padding: 0px;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  background-color: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 1px 10px 2px 0px;
+  border-radius: 8px;
+}
+
+#workspaces button {
+  color: @fg;
+  background-color: transparent;
+  margin: 2px;
+  padding: 0 6px;
+  border-radius: 8px;
+}
+
+#workspaces button:first-child {
+  border-radius: 8px 0 0 1px;
+}
+
+#workspaces button:last-child {
+  border-radius: 0 1px 1px 0;
+}
+
+#workspaces button:first-child:last-child {
+  border-radius: 8px;
+}
+
+#workspaces button.urgent {
+  color: red;
+  background-color: yellow;
+}
+
+#workspaces button.active {
+  background-color: @rd1;
+  color: @bg;
+  border-radius: 8px;
+}
+
+#workspaces button.empty {
+  color: @fg;
+  opacity: 0.4;
+}
+
+#workspaces button.empty.active {
+  color: @bg;
+  opacity: 1;
+}
+
+/* --- Custom Color+Shdow Omarchy --- */
+#custom-omarchy{
+  padding: 0 6px;
+  border-radius: 8px;
+  background-color: @bg;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  color: @rd1;
+  margin: 1px 10px 2px 0px;
+}
+#window{
+  padding: 0 6px;
+  background: @bg;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 1px 10px 2px 0px;
+  color: @fg;
+}
+
+/* --- General Modules --- */
+
+#tray,
+#cava,
+#memory,
+#cpu,
+#battery,
+#network,
+#custom-updatespacman,
+#temperature,
+#bluetooth,
+#pulseaudio,
+#custom-expand-icon,
+#custom-weather,
+#custom-update,
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#clock {
+  min-width: 15px;
+  padding: 0 6px;
+  margin: 0 2px;
+  
+}
+
+/* --- Right module Hover color --- */
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#temperature:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover {
+ background-color: @ia1;
+}
+
+#cava {
+  padding: 0 6px;
+  background-color: @background;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 1px 10px 2px 0px;
+  color: @error;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#mpris {
+  padding: 0 6px;
+  background-color: @bg;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px 0px @ia1;
+  margin: 1px 10px 2px 0px;
+  color: @fg;
+}
+
+tooltip {
+ padding: 5px;
+ background: @bg;
+ font-size: 13px;
+ border: 1px solid alpha(@foreground, 0.8);
+ border-radius: 10px;
+}
+tooltip label {
+    color: @fg;
+    font-weight: normal;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 3px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 13px;
+  padding-bottom: 1px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* Specific Module */
+
+#tray-expander {
+  padding: 0 0px;
+  margin: 0px;
+  background: @transparent;
+  color: @fg;
+  border-radius: 8px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+    font-size: 16px;
+    padding: 0 2px;
+    margin: 2px;
+}
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

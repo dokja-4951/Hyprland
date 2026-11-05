@@ -1,0 +1,321 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+/* --- Global-Settings ---*/
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 0px;
+  }
+
+  /* --- Waybar ---*/
+  window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+}
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+/* --- Tooltip ---*/
+tooltip {
+  opacity: 1;
+
+ }
+
+ /* --- Sub-Groups ---*/
+
+#left1{
+  border-radius: 32px;
+  border: 1px solid alpha(@foreground, 0.3);
+  margin: 0px 10px 4px 10px;
+  background-color: @background;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+#left2{
+  border-radius: 32px;
+  border: 1px solid alpha(@foreground, 0.3);
+  margin: 0px 10px 4px 10px;
+  background-color: @background;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+#left3{
+
+}
+
+ /* --- Modules ---*/
+
+.modules-center {
+  border-radius: 32px;
+  border: 1px solid alpha(@foreground, 0.3);
+  margin: 0px 10px 4px 10px;
+  background-color: @background;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+ }
+
+.modules-right {
+  border-radius: 32px;
+  border: 1px solid alpha(@foreground, 0.3);
+  margin: 0px 10px 4px 10px;
+  background-color: @background;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  border-radius: 30px;
+  background-color: alpha(@background, 1);
+  opacity: 0.95;
+  margin: 0px;
+  padding: 1px 1px 1px;
+}
+
+#workspaces button {
+  padding: 0px 12px;
+  margin: 2px 2px;
+  border-radius: 30px;
+  background-color: alpha(@foreground, 0.5);
+  color: @background; 
+  transition: all 0.2s ease-in-out;
+  opacity: 0.95;
+}
+
+#workspaces button.active {
+  color: @background;
+  min-width: 50px;
+  background-color: alpha(@foreground, 0.9);
+  opacity: 1.0;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.empty {
+  background-color: alpha(@foreground, 0.4);
+  color: @foreground;
+  opacity: 0.45;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.empty.active {
+  background-color: alpha(@foreground, 0.9);
+  color: @background;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.empty:hover,
+#workspaces button:hover {
+  background: @foreground;
+  color: @background;
+   opacity: 0.65;
+}
+
+/* --- General Modules --- */
+
+#tray,
+#window,
+#group-tray-expander,
+#mpris,
+#cpu,
+#clock,
+#battery,
+#network,
+#memory,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#custom-weather,
+#custom-update,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#idle_inhibitor,
+#custom-screenrecording-indicator,
+#custom-updatespacman {
+  min-width: 18px;
+  margin: 1px 4px 1px 4px;
+  padding: 0 4px;
+}
+
+/* Specific Module */
+
+#group-tray-expander {
+  border-radius: 30px;
+  background-color: transparent;
+  color: @foreground;
+}
+
+#bluetooth {
+  padding-right: 0px;
+}
+
+#custom-weather {
+  padding-right: 0px;
+}
+
+#custom-update {
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+#tray {
+    background-color: transparent;
+    border-radius: 30px;
+    margin: 0 12px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @transparent;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+ padding: 5px;
+ background: @background;
+ border: 1px solid alpha(@foreground, 0.8);
+ border-radius: 10px;
+ box-shadow: 1px 1px 3px 1px #131313;
+ font-size: 16px;
+ 
+}
+tooltip label {
+    color: @foreground;
+    font-weight: normal;
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 3px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+/* Specific animation Module */
+#mpris {
+  border-radius: 32px;
+  border: 2px solid alpha(@foreground, 0.3);
+  margin: 0px 10px 4px 10px;
+  background-color: @background;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+  transition-property: background-color;
+  transition-duration: .5s;
+  animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+@keyframes blink-inhibitor {
+    to {
+        color: @background;
+    }
+}
+
+#idle_inhibitor {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: @foreground;
+ }
+
+#idle_inhibitor.activated {
+  color: @primary_container;
+  animation-name: blink-inhibitor;
+  animation-duration: 1s;
+}
+
+#battery.warning {
+  color: @primary;
+	 background-color: transparent;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: transparent;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

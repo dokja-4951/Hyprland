@@ -1,0 +1,323 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+@define-color bg @surface_container_low;
+@define-color fg @on_surface;
+@define-color border-active @outline;
+@define-color border-inactive @surface_container_high;
+
+* {
+  /* background-color: @background; */
+  /* color: @foreground; */
+  
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  padding: 0;
+	min-height: 0;
+  font-family: 'CaskaydiaCove Nerd Font Propo';
+}
+
+#waybar  {
+  background-color: @transparent;
+}
+
+.modules-left {
+  margin-left: 10px;
+}
+
+.modules-center {
+  min-width: 15px;
+  margin: 2px 2px 2px 2px;
+  padding: 0px 22px;
+  color: @fg;
+  background-color: @bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  border-radius: 15px;
+  border: 2px solid @border-active;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+#workspaces {
+  padding: 0 10px;
+  margin: 2px 2px 2px 2px;
+  border-radius: 15px;
+  border: 2px solid @border-active;
+  color: @fg;
+  background-color: @bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 5px;
+  margin: 0 8px;
+  opacity: 1;
+  color: @tertiary;
+  font-size: 16px;
+}
+
+#workspaces button.active {
+    color: @secondary;
+    opacity: 1.0;
+    padding: 0 5px;
+    margin: 0 8px;
+    font-size: 16px;
+}
+
+#workspaces button.empty {
+  opacity: 0.3;
+  font-size: 16px;
+  padding: 0 5px;
+  margin: 0 8px;
+  color: @fg;
+}
+
+#workspaces button.empty.active {
+ font-size: 16px;
+ color: @fg;
+ opacity: 1.0;
+ padding: 0 5px;
+ margin: 0 8px;
+}
+
+#tray,
+#cpu,
+#memory,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#mpris,
+#temperature,
+#idle_inhibitor,
+#group-tray-expander,
+#custom-windowpill,
+#custom-expand-icon,
+#custom-omarchy,
+#custom-omarchy-theme-set,
+#custom-colorpicker,
+#custom-updatespacman {
+  min-width: 15px;
+  margin: 2px 2px 2px 2px;
+  padding: 0px 22px;
+  color: @fg;
+  background-color: @bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  border-radius: 15px;
+  border: 2px solid @border-active;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#tray {
+    background-color: @bg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @bg;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#power-profiles-daemon {
+    padding-left: 15px;
+}
+
+#group-tray-expander {
+  background-color: @bg;
+  color: @foreground;
+}
+
+#custom-windowpill {
+  min-width: 188px;
+  padding-left: 12px;
+  padding-right: 6px;
+}
+
+#custom-update {
+  padding: 0 5px;
+  margin: 0 0 0 9px;
+}
+
+tooltip {
+ padding: 5px;
+ background: @bg;
+ font-size: 13px;
+ border: 2px solid @border-active;
+ border-radius: 10px;
+}
+tooltip label {
+    color: @foreground;
+    font-weight: normal;
+}
+
+/* color earch module */
+
+#cpu {
+  color: @secondary
+}
+
+#battery,
+#memory {
+  color: @tertiary
+}
+
+#temperature {
+  color: @primary
+}
+
+#power-profiles-daemon {
+  color: @secondary
+}
+
+#pulseaudio {
+  color: @secondary
+}
+
+#network,
+#bluetooth {
+  color: @tertiary
+}
+
+#idle_inhibitor {
+  color: @tertiary_container
+}
+
+#idle_inhibitor {
+
+ 
+}
+
+#custom-omarchy-theme-set,
+#custom-colorpicker {
+  color: @tertiary
+}
+
+#custom-updatespacman {
+  color:@secondary
+}
+
+#custom-omarchy {
+  color: @secondary;
+  font-size: 16px;
+}
+
+#backlight,
+#clock {
+  background-color: @bg;
+  color: @on_surface;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+  padding-left: 8px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0 0 0 9px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 8px;
+  margin-right: 0px;
+  font-size: 14px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+#mpris {
+color: @foreground;
+animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+#battery.warning {
+  color: @primary;
+  background-color: @background;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: transparent;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

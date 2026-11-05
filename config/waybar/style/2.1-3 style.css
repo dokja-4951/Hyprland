@@ -1,0 +1,198 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color bg @surface_container;
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+#waybar > box {
+  background-color: @surface_container_lowest;
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 0px 10px 4px 10px;
+  border: .5px solid @outline_variant;
+  box-shadow: 1px 1px 3px 1px @surface_container_low;
+}
+
+/* Workspace buttons */
+
+#workspaces label {
+  font-size: 17px;
+}
+
+#workspaces button {
+  color: @secondary;
+  padding: 0 5px;
+  margin: 0;
+}
+
+#workspaces button.active {
+  color: @primary_fixed_dim;
+}
+
+#workspaces button.empty {
+  color: @error;
+}
+
+#workspaces button.empty.active {
+  color: @outline;
+}
+
+#workspaces button:hover {
+  color: @on_surface;
+  background-color: transparent;
+}
+
+#workspaces button.urgent {
+  color: @error;
+}
+
+/* Custom indicators - shared styles */
+#custom-voxtype,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-screenrecording-indicator {
+  color: @outline;
+  font-size: 14px;
+}
+
+#custom-voxtype.recording,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @primary;
+}
+
+/* Muted/disabled state */
+#idle_inhibitor,
+#power-profiles-daemon,
+#tray,
+#bluetooth,
+#network.disconnected,
+#pulseaudio.muted {
+  color: @outline;
+}
+
+/* Connected/active colored states */
+#idle_inhibitor.activated,
+#custom-omarchy {
+  color: @primary_fixed_dim;
+}
+
+#power-profiles-daemon.performance {
+  color: @error;
+}
+
+#power-profiles-daemon.balanced {
+  color: @primary_fixed_dim;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @secondary;
+}
+
+#bluetooth.connected {
+  color: @secondary;
+}
+
+/* Module padding group */
+#window,
+#custom-omarchy,
+#idle_inhibitor,
+#power-profiles-daemon,
+#mpris,
+#memory,
+#cpu,
+#pulseaudio,
+#bluetooth,
+#network,
+#custom-update,
+#custom-weather,
+#custom-voxtype,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-screenrecording-indicator,
+#backlight,
+#battery,
+#clock,
+#disk {
+  padding: 0 10px;
+}
+
+#custom-omarchy {
+  font-size: 17px;
+  padding: 0 10px;
+}
+
+#tray {
+  padding: 0 10px;
+}
+
+/* Module colors */
+#custom-update { color: @error; }
+#window { color: @on_surface_variant; }
+#mpris { color: @secondary; }
+#memory { color: @tertiary; }
+#cpu { color: @primary; }
+#pulseaudio { color: @error; }
+#network { color: @secondary; }
+#custom-weather {
+  color: @on_surface;
+  padding-left: 18px;
+}
+
+#clock {
+  color: @primary;
+}
+
+#battery { color: @error; }
+#backlight { color: @on_surface_variant; }
+#disk { color: @primary_fixed_dim; }
+
+tooltip {
+  background-color: @surface_container_lowest;
+  border: 1px solid @surface_container_highest;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+tooltip label {
+  color: @on_surface;
+}
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  background-color: transparent;
+  padding: 0 10px;
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @bg;
+    }
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

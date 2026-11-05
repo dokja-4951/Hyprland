@@ -1,0 +1,272 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+@define-color bg @surface;
+@define-color fg @outline_variant;
+@define-color fg2 @on_surface;
+@define-color border-active @surface_container_low;
+@define-color border-inactive @outline_variant;
+@define-color border-inactive2 @surface_container_high;
+
+* {
+  /* background-color: @background; */
+  /* color: @foreground; */
+  
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  padding: 0;
+	min-height: 0;
+  font-family: 'CaskaydiaCove Nerd Font Propo';
+}
+
+#waybar  {
+  background-color: @transparent;
+}
+
+.modules-left {
+  margin-left: 10px;
+}
+
+.modules-center {
+  min-width: 15px;
+  margin: 2px 2px 2px 2px;
+  padding: 0px 5px;
+  color: @fg;
+  background-color: @bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  border: 2px solid @border-active;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+#workspaces {
+  padding: 0 10px;
+  margin: 2px 2px 2px 2px;
+  border-radius: 8px;
+  border: 2px solid @border-active;
+  color: @fg;
+  background-color: @border-inactive2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 5px;
+  margin: 0 8px;
+  opacity: 1;
+  color: @border-active;
+  font-size: 16px;
+}
+
+#workspaces button.active {
+    color: @fg2;
+    opacity: 1.0;
+    padding: 0 5px;
+    margin: 0 8px;
+    font-size: 16px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+  font-size: 16px;
+  padding: 0 5px;
+  margin: 0 8px;
+  color: @fg;
+}
+
+#workspaces button.empty.active {
+ font-size: 16px;
+ color: @fg2;
+ opacity: 1.0;
+ padding: 0 5px;
+ margin: 0 8px;
+}
+
+#tray,
+#cpu,
+#memory,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#mpris,
+#temperature,
+#idle_inhibitor,
+#group-tray-expander,
+#custom-expand-icon,
+#custom-omarchy,
+#custom-omarchy-theme-set,
+#custom-colorpicker,
+#custom-updatespacman {
+  min-width: 15px;
+  margin: 2px 2px 2px 2px;
+  padding: 0px 22px;
+  color: @fg;
+  background-color: @bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  border: 2px solid @border-active;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#tray {
+    background-color: @bg;
+    color: @fg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @bg;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#power-profiles-daemon {
+    padding-left: 15px;
+}
+
+#group-tray-expander {
+  background-color: @background;
+  color: @foreground;
+}
+
+#custom-windowpill {
+  min-width: 188px;
+  padding-left: 12px;
+  padding-right: 6px;
+}
+
+#custom-update, #clock, #custom-weather, #custom-screenrecording-indicator.active, #custom-voxtype  {
+  padding: 0 8px;
+  margin: 0 0 0 3px;
+}
+
+#custom-weather {
+font-weight: 100;
+}
+
+#custom-omarchy {
+color: @fg2;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 13px;
+  padding-bottom: 0px;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @error;
+   background-color: @bg;
+}
+
+tooltip {
+ padding: 5px;
+ background: @bg;
+ font-size: 14px;
+ border: 2px solid @border-active;
+ border-radius: 10px;
+}
+tooltip label {
+    color: @fg2;
+    font-weight: 700;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+ 
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @bg;
+    }
+}
+
+#mpris {
+color: @foreground;
+animation: repeat;
+	animation-name: blink;
+	animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: @surface_container_highest;
+        
+    }
+}
+
+#battery.warning {
+  color: @primary;
+  background-color: @bg;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: transparent;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}

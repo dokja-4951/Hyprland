@@ -1,0 +1,7 @@
+# machine-specific / runtime
+config/waybar/config
+config/waybar/style.css
+config/hypr/current_wallpaper
+*.save
+*.bak
+*~

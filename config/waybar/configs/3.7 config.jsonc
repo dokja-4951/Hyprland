@@ -1,0 +1,357 @@
+// Fixed for Waybar 0.15+ on plain Hyprland (distro-specific modules removed). Original: HANCORE-linux/waybar-themes
+{
+  "exclusive": true,
+  "reload_style_on_change": true,
+  "position": "top",
+  "spacing": 0,
+  "height": 30,
+  "width": 1440,
+  "modules-left": [
+    "group/left1"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "custom/vidcon",
+    "group/right2",
+    "group/right1",
+    "group/right3"
+  ],
+  "group/left1": {
+    "orientation": "inherit",
+    "modules": [
+      "hyprland/workspaces"
+    ]
+  },
+  "group/right3": {
+    "orientation": "inherit",
+    "modules": [
+      "idle_inhibitor",
+      "custom/updatespacman",
+      "bluetooth",
+      "backlight",
+      "network",
+      "power-profiles-daemon",
+      "pulseaudio#output",
+      "pulseaudio#input",
+      "memory",
+      "cpu",
+      "battery"
+    ]
+  },
+  "group/right2": {
+    "orientation": "inherit",
+    "modules": [
+      "mpris"
+    ]
+  },
+  "group/right1": {
+    "orientation": "inherit",
+    "modules": [
+      "tray"
+    ]
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "on-click": "activate",
+    "format": "{windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "custom/voxtype": {
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+          "idle": "",
+          "recording": "󰍬",
+          "transcribing": "󰔟"
+        },
+        "tooltip": true
+      },
+      "class<.*imv*.>": "",
+      "class<.*bambustudio*.>": "󰐫",
+      "class<.*bitwarden*.>": "",
+      "class<.*handbrake*.>": "󰈫",
+      "class<.*stremio*.>": "󱖏",
+      "title<.*waydroid*.>": "",
+      "class<.*grayjay*.>": "󱗆",
+      "title<.*amazon.*>": "",
+      "class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": "",
+      "class<zen>": "󰰷",
+      "class<waterfox|waterfox-bin>": "",
+      "class<microsoft-edge>": "",
+      "class<Chromium|Thorium|[Cc]hrome>": "",
+      "class<brave-browser>": "🦁",
+      "class<tor browser>": "",
+      "class<firefox-developer-edition>": "🦊",
+      "class<kitty|konsole>": "",
+      "class<kitty-dropterm>": "",
+      "class<com.mitchellh.ghostty>": "",
+      "class<org.wezfurlong.wezterm>": "",
+      "class<org.omarchy.terminal>": "󰏖",
+      "class<[Tt]hunderbird|[Tt]hunderbird-esr>": "",
+      "class<eu.betterbird.Betterbird>": "",
+      "title<.*gmail.*>": "󰊫",
+      "class<[Tt]elegram-desktop|org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": "",
+      "class<discord|[Ww]ebcord|Vesktop>": "",
+      "title<.*whatsapp.*>": "",
+      "title<.*zapzap.*>": "",
+      "title<.*messenger.*>": "",
+      "title<.*facebook.*>": " ",
+      "title<.*reddit.*>": "",
+      "title<.*ChatGPT.*>": "󰚩",
+      "class<.*ChatGPT.*>": "󰚩",
+      "title<.*deepseek.*>": "󰚩",
+      "title<.*qwen.*>": "󰚩",
+      "class<subl>": "󰅳",
+      "class<slack>": "",
+      "class<mpv>": "",
+      "class<celluloid|Zoom>": "",
+      "class<Cider>": "󰎆 ",
+      "title<.*Picture-in-Picture.*>": "",
+      "title<.*youtube.*>": "",
+      "class<vlc>": "󰕼",
+      "title<.*cmus.*>": "",
+      "class<[Ss]potify>": "",
+      "class<virt-macodeger>": "",
+      "class<.virt-manager-wrapped>": "",
+      "class<virtualbox manager>": "💽",
+      "title<virtualbox>": "💽",
+      "class<remmina>": "🖥️",
+      "class<VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞",
+      "class<dev.zed.Zed>": "󰵁",
+      "class<codeblocks>": "󰅩",
+      "title<.*github.*>": "",
+      "class<mousepad>": "",
+      "class<libreoffice-writer>": "",
+      "class<libreoffice-startcenter>": " 󰏆",
+      "class<libreoffice-calc>": "",
+      "title<.*nvim ~.*>": "",
+      "class<org.gnome.Nautilus>": "󰣆",
+      "title<.*vim.*>": "",
+      "title<.*figma.*>": "",
+      "title<.*jira.*>": "",
+      "class<jetbrains-idea>": "",
+      "title<*.VSCode.*>": "󰨞",
+      "class<.*code.*>": "󰨞",
+      "class<obs|com.obsproject.Studio>": "",
+      "class<polkit-gnome-authentication-agent-1>": "󰒃",
+      "class<nwg-look>": "",
+      "class<[Pp]avucontrol|org.pulseaudio.pavucontrol>": "󱡫",
+      "class<steam>": "",
+      "class<thunar|nemo>": "󰝰",
+      "class<Gparted>": "",
+      "class<gimp>": "",
+      "class<emulator>": "📱",
+      "class<android-studio>": "",
+      "class<org.pipewire.Helvum>": "󰓃",
+      "class<localsend>": "",
+      "class<PrusaSlicer|UltiMaker-Cura|OrcaSlicer>": "󰹛"
+    }
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "wttrbar --nerd",
+    "return-type": "json"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "cpu": {
+    "interval": 2,
+    "format": " {usage}%",
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "interval": 2,
+    "format": " {percentage}%",
+    "on-click": "kitty -e btop"
+  },
+  "backlight": {
+    "format": "{icon}",
+    "tooltip-format": "{percent}%",
+    "format-icons": [
+      "🌑",
+      "🌘",
+      "🌗",
+      "🌖",
+      "🌕"
+    ]
+  },
+  "clock": {
+    "format": " {:%H:%M %a}",
+    "format-alt": " {:%d/%m/%Y %H:%M}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "format": {
+        "month": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "kitty -e nmtui"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓\n {timeTo}",
+    "tooltip-format-charging": "{power:>1.0f}W↑\n {timeTo}",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "kitty -e bluetoothctl"
+  },
+  "pulseaudio#input": {
+    "format-source": "",
+    "format-source-muted": " ",
+    "format": "{format_source}",
+    "tooltip-format": "{format_source} {source_volume}%",
+    "scroll-step": 1,
+    "smooth-scrolling-threshold": 1,
+    "max-volume": 100,
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%"
+  },
+  "pulseaudio#output": {
+    "format": "{icon}",
+    "tooltip-format": "{icon}  {volume}%",
+    "format-muted": " off",
+    "format-icons": {
+      "default": [
+        ""
+      ]
+    },
+    "max-volume": 100,
+    "scroll-step": 2,
+    "smooth-scrolling-threshold": 1,
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t"
+  },
+  "mpris": {
+    "format": "󰋎 {artist}-{title}",
+    "format-paused": "<i><span color='black'>{status_icon} {artist}</span></i>",
+    "max-length": 30,
+    "player-icons": {
+      "default": "⏸",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "󰋐"
+    },
+    "ignored-players": [
+      "firefox",
+      "chromium",
+      "brave"
+    ]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰛊",
+      "deactivated": "󰾪"
+    }
+  },
+  "custom/updatespacman": {
+    "format": "{}{icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": " 󰏖",
+      "updated": ""
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --no-zero-output"
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 4,
+    "show-passive-items": true
+  },
+  "custom/vidcon": {
+    "format": "",
+    "tooltip-format": "Video converter\nQueue: ~/Videos/convert_queue",
+    "on-click": "kitty --hold -e $HOME/.config/waybar/scripts/vidcon"
+  }
+}

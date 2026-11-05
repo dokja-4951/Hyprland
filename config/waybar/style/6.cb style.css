@@ -1,0 +1,240 @@
+@import "colors.css"; /* written by matugen -> ~/.config/waybar/colors.css */
+@define-color foreground @on_surface;
+@define-color transparent rgba(0,0,0,0);
+
+* {
+  /* background-color: @background; */
+  /* color: @foreground; */
+  
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  padding: 0;
+	min-height: 0;
+  font-family: 'CaskaydiaCove Nerd Font Propo';
+}
+
+#waybar  {
+  background-color: @transparent;
+}
+
+#waybar > box {
+  color: @foreground;
+  background-color: @background;
+  margin: 2px 8px 2px 8px;
+  padding: 0px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  transition-property: background-color;
+  transition-duration: .5s;
+  min-height: 38px;
+}
+
+.modules-left {
+  margin-left: 5px;
+}
+
+.modules-right {
+  margin-right: 5px;
+}
+
+#right2 {
+  margin-right: 5px;
+  padding-top: 10px;
+}
+
+#workspaces {
+  padding: 0 0px;
+  margin-top: 2px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 1px;
+  margin: 0 4px;
+  opacity: 0.55;
+  color: @foreground;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    opacity: 1.0;
+    font-size: 16px;
+}
+
+#workspaces button.empty {
+  opacity: 0.2;
+  font-size: 16px;
+  color: @foreground;
+}
+
+#workspaces button.empty.active {
+ font-size: 16px;
+ color: @foreground;
+ opacity: 1.0;
+}
+
+#custom-expand-icon,
+#tray,
+#cpu,
+#memory,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#idle_inhibitor,
+#custom-windowpill,
+#group-tray-expander,
+#custom-update,
+#custom-voxtype,
+#custom-voxtype.recording,
+#custom-voxtype.transcribing,
+#custom-expand-icon,
+#custom-omarchy,
+#custom-updatespacman,
+#custom-screenrecording-indicator {
+  min-width: 15px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 1px 1px 1px 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#clock{
+  padding-top: 5px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-omarchy {
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
+#custom-update {
+  font-size: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 0px;
+  opacity: 0.5;
+}
+
+#tray {
+    background-color: @background;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @background;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#power-profiles-daemon,
+#power-profiles-daemon.performance,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.power-saver {
+    margin: 0;
+    padding-left: 2px;
+}
+
+#custom-updatespacman {
+  opacity: 0.55;
+}
+
+#custom-separator {
+  opacity: 0.25;
+  padding-left: 2px;
+  padding-right: 5px;
+}
+
+#custom-separator3 {
+  opacity: 0.25;
+  padding-left: 2px;
+  padding-right: 8px;
+}
+
+tooltip {
+ padding: 5px;
+ background: @background;
+ font-size: 16px;
+ border-radius: 10px;
+ border: 1.5px solid alpha(@on_surface, 0.25);
+}
+tooltip label {
+    color: @foreground;
+}
+
+/* Specific animation Module */
+
+#custom-screenrecording-indicator {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: transparent;
+}
+
+#custom-screenrecording-indicator.active {
+  color: @error;
+  animation-name: blink-recording;
+  animation-duration: 0.5s;
+}
+
+@keyframes blink-recording {
+    to {
+        color: @background;
+    }
+}
+
+#custom-voxtype {
+  min-width: 15px;
+  margin: 0px 0 0 0px;
+}
+
+#custom-voxtype.recording {
+  color: @error;
+}
+
+#battery.warning {
+  color: @primary;
+  background-color: @background;
+}
+
+@keyframes blink2 {
+  to {
+    background-color: @background;
+    color: @error;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: transparent;
+  color: @primary;
+  animation-name: blink2;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* video converter button */
+#custom-vidcon {
+  padding: 0 10px;
+  margin: 0 4px;
+}
