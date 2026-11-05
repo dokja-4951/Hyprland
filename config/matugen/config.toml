@@ -1,5 +1,5 @@
 [config.wallpaper]
-command = "awww img {{ image }} --transition-type any --transition-fps 300"
+command = "awww img {{ image }} --transition-type any --transition-fps 120"
 set = true
 
 [templates.waybar]
