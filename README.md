@@ -1,27 +1,37 @@
-# Hyprland (Lua config) dotfiles
+# Hyprland
+Hyprland dotfiles  
+These dotfiles are not 100% my creation i just added my touch and my preferance according to my system  
+{ Used AI to convert these to lua  }
 
-Hyprland + Waybar + matugen (Material You colours from the wallpaper).
+# How to use these manually -
+A- Copy all files from config to your .config directory  
 
-```
-config/
-  hypr/      hyprland.lua + configs/ (look, animations, rules, input, binds), hyprlock, hypridle, scripts/
-  waybar/    configs/ (90 layouts), style/ (90 styles), scripts/ (helpers)
-  matugen/   config.toml + templates/  -> writes colours for waybar, hypr, kitty, rofi, cava, gtk, ...
-  kitty/ rofi/ swaync/ wlogout/ cava/ fastfetch/
-install.sh   copies config/* into ~/.config (backs up what's there)
-```
+B- Put.zshrc into $HOME directory  
 
-## Install
+C- Download [wallpaers.zip](https://github.com/dokja-4951/Hyprland/releases/download/wallpapers-v1/wallpapers.zip) assset from Releases and extract it into ~/Pictures  
+
+D- Give permission to Scripts for them to work properly    
+"chmod +x ~/.config/hypr/scripts/*"
+
+## Install 
 ```bash
 git clone -b main https://github.com/dokja-4951/Hyprland && cd Hyprland
 ./install.sh
 matugen image ~/Pictures/wallpapers/<wallpaper>.png
 ```
 
-## Needs
-hyprland (Lua config support), waybar, matugen, awww, rofi, swaync, kitty, wlogout, hyprlock, hypridle,
-cava, fastfetch, clipse, pavucontrol, nm-applet, blueman, JetBrainsMono Nerd Font.
+## Important
+For these to work properly you should have these things installed   
+[ Hyprland, waybar, matugen, awww, rofi, swaync, kitty, wlogout, hyprlock, hypridle,
+cava, fastfetch, clipse, pavucontrol, nm-applet, blueman, JetBrainsMono Nerd Font. ]
 
-## Waybar
-`hypr/scripts/WaybarLayout.sh` / `WaybarStyles.sh` pick a layout / style; they symlink
-`~/.config/waybar/config` and `style.css`. Colours: every style imports `colors.css` written by matugen.
+
+
+# ~
+I myself am new to ricing so i don't have much knowladge about all these   
+So,before applying these to your system have a look yourself ^^
+
+#
+<img width="2560" height="1438" alt="Preview" src="https://github.com/user-attachments/assets/6912ac48-864d-44ff-a7af-77c8dd962d3e" />   
+<img width="2548" height="1440" alt="Preview3" src="https://github.com/user-attachments/assets/cbce0b70-ba22-4ac4-805a-d0a8abf526b4" />   
+<img width="2560" height="1439" alt="Preview2" src="https://github.com/user-attachments/assets/ad1d6ad5-d9aa-4ef3-8f91-878609518e5c" />  
