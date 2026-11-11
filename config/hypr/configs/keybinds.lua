@@ -86,7 +86,6 @@ hl.bind("ALT + o", hl.dsp.exec_cmd("bash $HOME/.config/hypr/scripts/down.sh"))
 
 
 
--- Add this to your ~/.config/hypr/hyprland.lua
 hl.bind("SUPER + M", function()
     hl.dispatch(hl.dsp.exit())
 end)
