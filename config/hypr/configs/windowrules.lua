@@ -1,40 +1,77 @@
 -- configs/windowrules.lua
--- One rule table per app: match + every property together.
-local function rule(match, props)
-    props.match = match
-    hl.window_rule(props)
-end
 
------------------------------- OPACITY / BLUR ------------------------------
-rule({ class = "^settings.*" },                                   { float = true, opacity = "0.8" })
-rule({ class = "^viewer.*" },                                     { float = true, opacity = "0.8" })
-rule({ class = "^org\\.gnome\\.Nautilus$" },                      { opacity = "0.8" })
-rule({ class = "^(gedit|org\\.gnome\\.TextEditor|mousepad)$" },   { opacity = "0.9" })
-rule({ class = "^code-oss$" },                                    { opacity = "0.8" })
-rule({ class = "^(discord|vesktop|org\\.telegram\\.desktop)$" },  { opacity = "0.85 0.7" })
-rule({ class = "^Spotify$" },                                     { opacity = "0.8 0.6" })
-rule({ class = "^librewolf$" },                                   { opacity = "0.85" })
-rule({ class = "^firefox$" },                                     { opacity = "0.85" })
-rule({ class = "^multimedia_video.*" },                           { float = true, no_blur = true, opacity = "1.0", size = { 1280, 720 } })
+-- APPLICATION OPACITY AND BLUR
+hl.window_rule({ match = { class = "^multimedia_video.*" }, no_blur = true })
+hl.window_rule({ match = { class = "^multimedia_video.*" }, opacity = "1.0" })
+hl.window_rule({ match = { class = "^settings.*" }, opacity = "0.8" })
+hl.window_rule({ match = { class = "^org\\.gnome\\.Nautilus$" }, opacity = "0.8" })
+hl.window_rule({ match = { class = "^(gedit|org\\.gnome\\.TextEditor|mousepad)$" }, opacity = "0.9" })
+hl.window_rule({ match = { class = "^code-oss$" }, opacity = "0.8" })
 
------------------------------- FLOATING APPS -------------------------------
-rule({ class = "^org\\.pulseaudio\\.pavucontrol$" }, { float = true, opacity = "0.9", size = { 1200, 800 } })
-rule({ class = "^clipse$" },                         { float = true, opacity = "0.8", size = { 800, 500 }, move = { 1600, 300 } })
-rule({ class = "^ttyclock$" },                       { float = true, size = { 800, 500 }, move = { 1560, 138 } })
--- every kitty window floats (also used by waybar click-actions such as btop/nmtui)
-rule({ class = "^kitty$" },                          { float = true, size = { 800, 500 }, move = { 1450, 400 } })
+-- Pavucontrol
+hl.window_rule({ match = { class = "^org\\.pulseaudio\\.pavucontrol$" }, float = true })
+hl.window_rule({ match = { class = "^org\\.pulseaudio\\.pavucontrol$" }, opacity = "0.9" })
+hl.window_rule({ match = { class = "^org\\.pulseaudio\\.pavucontrol$" }, size = { 1200, 800 } })
 
------------------------------- DIALOGS -------------------------------------
-rule({ title = "^(Save As|Save a File|Pick Files)$" }, { float = true, size = "50% 60%", center = true })
-rule({ initial_title = "^Open Files$" },               { float = true, size = "70% 60%" })
+-- Kitty terminal custom layout position
+hl.window_rule({ match = { class = "^kitty$" }, float = true })
+hl.window_rule({ match = { class = "^kitty$" }, size = { 800, 500 } })
+hl.window_rule({ match = { class = "^kitty$" }, move = { 1450, 400 } })
 
------------------------------- MISC ----------------------------------------
-rule({ class = ".*" },            { suppress_event = "maximize" })  -- ignore maximize requests
-rule({ class = "^$" },            { no_focus = true })              -- XWayland drag fix
-rule({ class = "^(waydroid.*)$" }, { suppress_event = "maximize" })
+-- Messaging app opacities
+hl.window_rule({ match = { class = "^(discord|vesktop|org\\.telegram\\.desktop)$" }, opacity = "0.85 0.7" })
+hl.window_rule({ match = { class = "^Spotify$" }, opacity = "0.8 0.6" })
+hl.window_rule({ match = { class = "^librewolf$" }, opacity = "0.85" })
+hl.window_rule({ match = { class = "^viewer.*" }, opacity = "0.8" })
+hl.window_rule({ match = { class = "^firefox$" }, opacity = "0.85" })
 
------------------------------- LAYER RULES ---------------------------------
-hl.layer_rule({ match = { namespace = "^waybar$" },                       blur = true, ignore_alpha = 0.5 })
-hl.layer_rule({ match = { namespace = "^logout_dialog$" },                blur = true })
-hl.layer_rule({ match = { namespace = "^swaync-control-center$" },        blur = true, ignore_alpha = 0.5, xray = false })
-hl.layer_rule({ match = { namespace = "^swaync-notification-window$" },   blur = true, ignore_alpha = 0.5, xray = false })
+-- Clipse clipboard manager
+hl.window_rule({ match = { class = "^clipse$" }, float = true })
+hl.window_rule({ match = { class = "^clipse$" }, opacity = "0.8" })
+hl.window_rule({ match = { class = "^clipse$" }, size = { 800, 500 } })
+hl.window_rule({ match = { class = "^clipse$" }, move = { 1600, 300 } })
+
+-- LAYER RULES (Waybar & system blur)
+hl.layer_rule({ match = { namespace = "^waybar$" }, blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "^logout_dialog$" }, blur = true })
+
+-- SwayNC
+hl.layer_rule({ match = { namespace = "^swaync-control-center$" }, blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "^swaync-control-center$" }, xray = false })
+
+hl.layer_rule({ match = { namespace = "^swaync-notification-window$" }, blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "^swaync-notification-window$" }, xray = false })
+
+-- WINDOW MANAGEMENT CONSTRAINTS
+hl.window_rule({ match = { class = "^settings.*" }, float = true })
+hl.window_rule({ match = { class = "^viewer.*" }, float = true })
+hl.window_rule({ match = { class = "^multimedia_video.*" }, float = true })
+hl.window_rule({ match = { class = "^multimedia_video.*" }, size = { 1280, 720 } })
+
+-- Ignore maximize requests from all windows
+hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" })
+
+-- Fix cursor dragging constraints over XWayland windows
+hl.window_rule({ match = { class = "^$" }, no_focus = true })
+
+-- SYSTEM POPUPS AND DIALOGUES
+hl.window_rule({ match = { title = "^(Save As|Save a File|Pick Files)$" }, float = true })
+hl.window_rule({ match = { title = "^(Save As|Save a File|Pick Files)$" }, size = "50% 60%" })
+hl.window_rule({ match = { title = "^(Save As|Save a File|Pick Files)$" }, center = true })
+
+hl.window_rule({ match = { initial_title = "^Open Files$" }, float = true })
+hl.window_rule({ match = { initial_title = "^Open Files$" }, size = "70% 60%" })
+
+-- Waydroid
+hl.window_rule({ match = { class = "^(waydroid.*)$" }, suppress_event = "maximize" })
+
+
+--Corner
+hl.config({
+    general = {
+        border_size = 0,   -- no borders on any window
+    },
+    decoration = {
+        rounding = 15,     -- corner radius in px
+    },
+})
