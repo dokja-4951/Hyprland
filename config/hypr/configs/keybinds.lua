@@ -84,3 +84,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 hl.bind("ALT + p", hl.dsp.exec_cmd("bash $HOME/.config/hypr/scripts/up.sh"))
 hl.bind("ALT + o", hl.dsp.exec_cmd("bash $HOME/.config/hypr/scripts/down.sh"))
 
+
+hl.bind("SUPER + M", function()
+    hl.dispatch(hl.dsp.exit())
+end)
